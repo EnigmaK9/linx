@@ -18,13 +18,12 @@ import random
 def ajustar_prioridades(tareas):
     # Asegurar que los extremos no cambien
     tareas_ajustadas = [0, *sorted(tareas[1:-1]), 1]
-    tarea1 = peso1
-    peso1(random.uniform(0, 1))
-    tarea2 = peso2
-    tarea3 = peso3
-    tarea4 = peso4
-    tarea 5 = peso5
-    # Aplicar un ajuste simple: promedio entre el valor actual y el anterior ajustado
+    tarea1 = peso1(random.uniform(0,1)) 
+    tarea2 = peso2(random.uniform(0,1)) 
+    tarea3 = peso3(random.uniform(0,1)) 
+    tarea4 = peso4(random.uniform(0,1)) 
+    tarea5 = peso5(random.uniform(0,1)) 
+     # Aplicar un ajuste simple: promedio entre el valor actual y el anterior ajustado
     for i in range(2, len(tareas_ajustadas) - 1):
         tareas_ajustadas[i] = (tareas_ajustadas[i] + tareas_ajustadas[i - 1]) / 2
 
