@@ -1,9 +1,9 @@
-PWD /home/enigma/repos/linx/presentations/02_13_04_24
+PWD /home/enigma/repos/linx/presentations/02-modules-1-battery-13_04_24
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/enigma/repos/linx/presentations/02_13_04_24/main.tex
+INPUT /home/enigma/repos/linx/presentations/02-modules-1-battery-13_04_24/main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls

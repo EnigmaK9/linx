@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.30)  14 MAR 2024 09:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.30)  18 MAR 2024 11:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/enigma/repos/linx/presentations/02_13_04_24/main.tex
-(/home/enigma/repos/linx/presentations/02_13_04_24/main.tex
+**/home/enigma/repos/linx/presentations/02-modules-1-battery-13_04_24/main.tex
+(/home/enigma/repos/linx/presentations/02-modules-1-battery-13_04_24/main.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-01-16> (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2022/09/13 v3.68 A class for typesetting presentations
@@ -664,7 +664,7 @@ Type X to quit or <RETURN> to proceed,
 or enter new name. (Default extension: sty)
 
 Enter file name: 
-/home/enigma/repos/linx/presentations/02_13_04_24/main.tex:14: Emergency stop.
+/home/enigma/repos/linx/presentations/02-modules-1-battery-13_04_24/main.tex:14: Emergency stop.
 <read *> 
          
 l.14 \usepackage
@@ -674,10 +674,10 @@ l.14 \usepackage
  
 Here is how much of TeX's memory you used:
  24996 strings out of 478051
- 495567 string characters out of 5840942
+ 495621 string characters out of 5840942
  1849330 words of memory out of 5000000
  44676 multiletter control sequences out of 15000+600000
  513668 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,0n,104p,449b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
-/home/enigma/repos/linx/presentations/02_13_04_24/main.tex:14:  ==> Fatal error occurred, no output PDF file produced!
+ 101i,0n,104p,467b,443s stack positions out of 10000i,1000n,20000p,200000b,200000s
+/home/enigma/repos/linx/presentations/02-modules-1-battery-13_04_24/main.tex:14:  ==> Fatal error occurred, no output PDF file produced!
