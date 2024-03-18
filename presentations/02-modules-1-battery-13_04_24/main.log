@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.30)  18 MAR 2024 11:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2024.3.18)  18 MAR 2024 11:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -790,7 +790,7 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 Package: babel 2022/12/26 3.84 The Babel package
 \babel@savecnt=\count346
 \U@D=\dimen309
-\l@unhyphenated=\language3
+\l@unhyphenated=\language7
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read3
@@ -813,7 +813,7 @@ Package babel Info: You haven't specified a language as a class or package
 (babel)             option. I'll load 'nil'. Reported on input line 4406.
 (/usr/share/texlive/texmf-dist/tex/generic/babel/nil.ldf
 Language: nil 2022/12/26 3.84 Nil language
-\l@nil=\language4
+\l@nil=\language8
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -839,13 +839,12 @@ Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
 \l__lipsum_b_int=\count351
 
 (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.ltd.tex))
+(/usr/share/texlive/texmf-dist/tex/latex/physics/physics.sty
+Package: physics 
 
-! LaTeX Error: File `physics.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
+Package: xparse 2023-01-16 L3 Experimental document command parser
+))
 (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip74
@@ -999,9 +998,6 @@ Package: multicol 2021/11/30 v1.9d multicolumn formatting (FMi)
 (/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
 
-(/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
-Package: xparse 2023-01-16 L3 Experimental document command parser
-)
 (/usr/share/texlive/texmf-dist/tex/latex/zref/zref-abspage.sty
 Package: zref-abspage 2022-04-07 v2.34 Module abspage for zref (HO)
 
@@ -1137,13 +1133,14 @@ File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
-
-! LaTeX Error: File `tensor.sty' not found.
-
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
-
-Enter file name: 
+(/usr/share/texlive/texmf-dist/tex/latex/tensor/tensor.sty
+Package: tensor 2004/12/20 v2.1 tensor indices package (PGR)
+\tnsr@Sps=\toks54
+\tnsr@Sbs=\toks55
+\tnsr@Spe=\toks56
+\tnsr@Sbe=\toks57
+\ncld@Mno=\toks58
+)
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
 Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
 \csq@reset=\count383
@@ -1152,7 +1149,7 @@ Package: csquotes 2022-09-14 v5.2n context-sensitive quotations (JAW)
 \csq@qlevel=\count386
 \csq@maxlvl=\count387
 \csq@tshold=\count388
-\csq@ltx@everypar=\toks54
+\csq@ltx@everypar=\toks59
 
 (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.def
 File: csquotes.def 2022-09-14 v5.2n csquotes generic definitions (JAW)
@@ -1238,12 +1235,12 @@ LaTeX Font Info:    ... okay on input line 55.
 \scratchbox=\box138
 \nofMPsegments=\count390
 \nofMParguments=\count391
-\everyMPshowfont=\toks55
+\everyMPshowfont=\toks60
 \MPscratchCnt=\count392
 \MPscratchDim=\dimen334
 \MPnumerator=\count393
 \makeMPintoPDFobject=\count394
-\everyMPtoPDFconversion=\toks56
+\everyMPtoPDFconversion=\toks61
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1367,4 +1364,4 @@ File: Feathergraphics/2.png Graphic file (type png)
 Package pdftex.def Info: Feathergraphics/2.png  used on input line 65.
 (pdftex.def)             Requested size: 37.40611pt x 37.3967pt.
 
-Missing character: There is no ; in font n
+Missing character: There is no ; in font nullfo
