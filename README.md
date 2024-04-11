@@ -1,7 +1,7 @@
 # Neural Network Code for Nanosatellite
 
 ## Overview
-This repository contains the source code for the neural network developed for the nanosatellite project. The neural network is designed to perform specific tasks or functions related to the operation of the nanosatellite, such as data analysis, decision-making, or control.
+This repository contains the source code for the neural network developed for the nanosatellite project. The neural network is designed to perform specific tasks or functions related to the operation of the nanosatellite, such as decision making.
 
 ## Contents
 - *01-project-progress_13_march_2024*: Folder containing progress updates on the project as of March 13, 2024.
