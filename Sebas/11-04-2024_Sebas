@@ -40,7 +40,7 @@ def generar_lista_horas_y_tiempos(num_elementos):
     return lista_horas_tiempos
 
 # Número de elementos en la lista que deseas generar
-num_elementos = 10
+num_elementos = 5
 
 # Generar la lista de horas de inicio y tiempos aleatorios
 lista_horas_tiempos = generar_lista_horas_y_tiempos(num_elementos)
