@@ -1,0 +1,28 @@
+- Todo en mah
+- por 60 minutos
+- 2 horas y media
+- cesar ya pudo combinar los dos programas
+- generate simulation realistic data
+- jenkins
+- entregarlo el martes
+- es para que sea un proceso iterativo
+- tabla de valores de las potencias
+- mostrar el excel en las diapositivas
+- potencia / voltaje * horas de trabajo * 60 = mah
+- integrar todas las tablas que generamos en una sola base de datos (lunes)
+- 15 ciclos de trabajo, maximo
+- antenas, 15% de 24 horas
+
+- ¿siempre es el mismo ciclo de trabajo todos los dias, o hay dias donde use mas
+  porcentaje de ciclo de trabajo?
+
+- si se puede actualizar desde aqui desde la estación terrena
+TODO:
+- reunion del lunes (base de datos) virtual
+
+- sebas solo por la mañana
+- 11 am
+- reuniones martes y viernes (presencial)
+- hacer esquema de la base de datos
+- generar nuestras tablas
+
