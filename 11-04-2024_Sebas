@@ -1,0 +1,55 @@
+import random
+from datetime import datetime, timedelta
+
+#Parametros Antenas
+
+consumo_COMS773TX = 7.2
+
+def generar_hora_inicio_aleatoria():
+    # Generar una hora aleatoria entre las 00:00 y las 23:59
+    hora = random.randint(0, 23)
+    minutos = random.randint(0, 59)
+    segundos = random.randint(0, 59)
+    return hora, minutos, segundos
+
+def generar_tiempo_aleatorio():
+    # Generar minutos aleatorios entre 0 y 215 (3.6 horas en minutos)
+    minutos = random.randint(0, 59)
+    # Generar segundos aleatorios entre 0 y 59
+    segundos = random.randint(0, 59)
+
+    return minutos, segundos
+
+def formatear_tiempo(minutos, segundos):
+    return "{:02d}:{:02d}".format(minutos, segundos)
+
+# Función para convertir tiempo a timedelta
+def tiempo_a_timedelta(minutos, segundos):
+    return timedelta(minutes=minutos, seconds=segundos)
+
+def generar_lista_horas_y_tiempos(num_elementos):
+    lista_horas_tiempos = []
+    tiempo_total = timedelta()
+    while tiempo_total.total_seconds() < 3.6 * 3600 and len(lista_horas_tiempos) < num_elementos:
+        hora_inicio = generar_hora_inicio_aleatoria()
+        minutos, segundos = generar_tiempo_aleatorio()
+        tiempo = tiempo_a_timedelta(minutos, segundos)
+        if tiempo_total + tiempo <= timedelta(hours=3, minutes=36):
+            lista_horas_tiempos.append((hora_inicio, tiempo))
+            tiempo_total += tiempo
+    return lista_horas_tiempos
+
+# Número de elementos en la lista que deseas generar
+num_elementos = 10
+
+# Generar la lista de horas de inicio y tiempos aleatorios
+lista_horas_tiempos = generar_lista_horas_y_tiempos(num_elementos)
+
+# Obtener la fecha de hoy
+fecha_hoy = datetime.now().date()
+
+# Imprimir la lista de fechas, horas de inicio y tiempos
+print("Lista de horas de inicio y tiempos aleatorios con una suma total menor a 3.6 horas para la fecha de hoy:")
+for i, (hora_inicio, tiempo) in enumerate(lista_horas_tiempos, 1):
+    print("Elemento {}: Fecha: {}, Hora de inicio: {}, Tiempo: {}".format(i, fecha_hoy.strftime("%Y-%m-%d"),
+     formatear_tiempo(hora_inicio[0], hora_inicio[1]), formatear_tiempo(tiempo.seconds // 60, tiempo.seconds % 60)))
