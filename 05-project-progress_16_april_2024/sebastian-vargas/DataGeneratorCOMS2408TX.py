@@ -12,7 +12,7 @@ def asignar_valor_aleatorio():
     valor_asignado_Vop = random.choice(valores_posibles)
     
     return valor_asignado_Vop
-
+print (asignar_valor_aleatorio())
 
 #Parametros Antenas
 potencia_COMS2408TX = 25 #En Watts
@@ -56,7 +56,7 @@ def generar_lista_horas_y_tiempos(num_elementos, fecha):
     return lista_horas_tiempos
 
 # Número de elementos en la lista que deseas generar
-num_elementos = 10
+num_elementos = 5
 
 # Crear una lista para almacenar los próximos 14 días
 lista_14_dias = []
@@ -64,8 +64,13 @@ lista_14_dias = []
 # Obtener la fecha actual
 fecha_actual = datetime.now().date()
 
+# Crear listas para almacenar hora_inicio y corriente_mAs
+horas_inicio = []
+corrientes_mAs = []
+
 # Iterar sobre los próximos 14 días y agregarlos a la lista
-for i in range(14):
+days = 1
+for i in range(days):
     fecha = fecha_actual + timedelta(days=i)
     lista_14_dias.append(fecha)
 
@@ -74,13 +79,29 @@ for fecha in lista_14_dias:
     lista_horas_tiempos = generar_lista_horas_y_tiempos(num_elementos, fecha)
     
     # Imprimir la lista de fechas, horas de inicio y tiempos
-    print("Lista de horas de inicio y tiempos aleatorios con una suma total menor a 3.6 horas para la fecha:", fecha)
     for i, (fecha, hora_inicio, tiempo) in enumerate(lista_horas_tiempos, 1):
-        corriente_mAs = tiempo.seconds * corriente_COMS2408TX
+        asignar_valor_aleatorio()
+        Vop_COMS2408TX = asignar_valor_aleatorio() #En Volts
+        print(Vop_COMS2408TX) #Para saber que valor de la corriente le esta dando
+        corriente_COMS2408TX = (potencia_COMS2408TX / Vop_COMS2408TX) 
+        corriente_mAs = round((tiempo.seconds * corriente_COMS2408TX), 2)
+
+        # Almacenar los valores de hora_inicio y corriente_mAs en las listas
+        horas_inicio.append(hora_inicio[0])  # Solo necesitamos la hora de inicio
+        corrientes_mAs.append(corriente_mAs)
+
         print("Elemento {}: Fecha: {}, Hora de inicio: {}, Tiempo: {}, Corriente: {} mAs".format(i, fecha.strftime("%Y-%m-%d"),
-                                                                                                formato_tiempo(hora_inicio[0], hora_inicio[1]),
-                                                                                                formato_tiempo(tiempo.seconds // 60, tiempo.seconds % 60),
-                                                                                                corriente_mAs))
+        formato_tiempo(hora_inicio[0], hora_inicio[1]),
+        formato_tiempo(tiempo.seconds // 60, tiempo.seconds % 60),
+        corriente_mAs))
 
+# Graficar el estado de la batería
+import matplotlib.pyplot as plt
 
-
+# Graficar el estado de la batería como una gráfica de dispersión
+plt.scatter(horas_inicio, corrientes_mAs)
+plt.title("Estado de la Batería")
+plt.xlabel("Hora de inicio")
+plt.ylabel("Corriente (mAs)")
+plt.grid(True)
+plt.show()
