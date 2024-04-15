@@ -24,7 +24,7 @@ The neural network code can be utilized for various purposes within the nanosate
 - Carlos Padilla
 - Cesar Trinidad
 - Sebastian Vargas
-- Marlen Villanueva
+- Marlene Villanueva
 
 ## License
 - MIT License. All rights reserved.
