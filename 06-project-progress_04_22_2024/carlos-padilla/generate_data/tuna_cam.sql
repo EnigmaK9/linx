@@ -1,4 +1,4 @@
-create table tuma_cam (
+create table tuna_cam (
     id integer primary key,
     start_time text not null,
     duration integer not null,

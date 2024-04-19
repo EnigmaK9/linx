@@ -5,9 +5,9 @@ import camera_mantis_data_generator
 
 # Parameters for database connection
 db_params = {
-    'host': 'localhost',
-    'user': 'your_username',
-    'password': 'your_password',
+    'host': 'deep-blue',
+    'user': 'root',
+    'password': 'gengar',
     'db': 'satellite_data',
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor

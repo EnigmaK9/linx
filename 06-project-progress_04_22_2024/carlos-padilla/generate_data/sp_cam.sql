@@ -1,4 +1,4 @@
-create table camera_mantis (
+create table sp_cam (
     id integer primary key,
     start_time text not null,
     duration integer not null,

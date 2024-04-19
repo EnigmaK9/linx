@@ -1,4 +1,4 @@
-:create table obc (
+create table obc (
     id integer primary key,
     start_time text not null,
     duration integer not null,
