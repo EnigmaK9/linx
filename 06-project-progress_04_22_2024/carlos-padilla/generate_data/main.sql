@@ -13,8 +13,8 @@ source comms_2408_mhz_tx.sql;
 -- Imaging and Sensors
 source camera_mantis.sql;
 source sipm.sql;
-source sp_cam;
-source tuna_cam;
+source sp_cam.sql;
+source tuna_cam.sql;
 
 -- On-board Control and Power Systems
 source obc.sql;
