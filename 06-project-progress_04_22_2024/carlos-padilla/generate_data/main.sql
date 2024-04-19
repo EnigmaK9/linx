@@ -11,11 +11,10 @@ source comms_437_mhz_tx.sql;
 source comms_2408_mhz_tx.sql;
 
 -- Imaging and Sensors
-source camera_gecko.sql;
 source camera_mantis.sql;
-source camera_chameleon.sql;
 source sipm.sql;
-source camera_simi.sql;
+source sp_cam;
+source tuna_cam;
 
 -- On-board Control and Power Systems
 source obc.sql;
