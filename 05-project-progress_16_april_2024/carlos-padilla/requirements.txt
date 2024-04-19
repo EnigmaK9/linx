@@ -1,3 +1,0 @@
-pip install mysql-connector-python
--- install mariadb
-

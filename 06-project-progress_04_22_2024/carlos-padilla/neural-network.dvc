@@ -1,0 +1,6 @@
+outs:
+- md5: cd23a17ad17a97aee68ba734d689473d.dir
+  size: 71628
+  nfiles: 2
+  hash: md5
+  path: neural-network
