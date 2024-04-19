@@ -2,6 +2,7 @@ import pymysql
 import random
 from datetime import datetime, timedelta
 import camera_mantis_data_generator
+import obc_data_generator
 
 # Parameters for database connection
 db_params = {

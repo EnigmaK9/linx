@@ -1,5 +1,5 @@
 outs:
-- md5: f3c2ed4a23d84771125d3db6b631f0a9
-  size: 1056
+- md5: 2bdcaf0ef736a6e1f224040a8f5ac344
+  size: 746
   hash: md5
   path: db-connection-test.py
