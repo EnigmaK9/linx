@@ -12,7 +12,7 @@ script_files = [
     '04-comms_437_mhz_rx.sql',
     '05-comms_437_mhz_tx.sql',
     '06-comms_2408_mhz_tx.sql',
-    '07-camera_mantis.sql',
+    '07-camera_computer.sql',
     '08-sipm.sql',
     '09-sp_cam.sql',
     '10-tuna_cam.sql',
