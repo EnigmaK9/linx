@@ -1,7 +1,7 @@
 import sqlite3
 
 # Connect to the SQLite database
-conn = sqlite3.connect('your_database.db')
+conn = sqlite3.connect('nanoswai.db')
 cursor = conn.cursor()
 
 # List of script files
