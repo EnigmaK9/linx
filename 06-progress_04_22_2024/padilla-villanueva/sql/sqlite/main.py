@@ -1,5 +1,5 @@
 import sqlite3
-from generate_camera_computer_data import insert_camera_computer_data
+#from generate_camera_computer_data import insert_camera_computer_data
 
 # Connect to the SQLite database
 conn = sqlite3.connect('nanoswai.db')
@@ -30,7 +30,7 @@ for script in script_files:
     print(f"Executed {script}")
 
 # Generate and insert data for camera_computer
-    insert_camera_computer_data(conn)
+#  insert_camera_computer_data(conn)
 
 # Commit changes and close connection
 conn.commit()

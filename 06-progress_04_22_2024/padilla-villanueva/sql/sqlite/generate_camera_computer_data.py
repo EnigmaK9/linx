@@ -1,27 +1,43 @@
 import sqlite3
-from datetime import datetime, timedelta
 import random
+from datetime import datetime, timedelta
 
-def insert_camera_computer_data(db_connection):
-    cursor = db_connection.cursor()
-    start_time = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)  # Start at midnight
+# Connect to the SQLite database
+conn = sqlite3.connect('nanoswai.db')
+cursor = conn.cursor()
 
-    # Generate data for 24 hours, assuming operation every 10 minutes on average
-    while start_time < datetime.now().replace(hour=23, minute=50, second=0, microsecond=0):
-        duration = random.randint(1, 10)  # Duration in minutes, less than 10 minutes
-        capture_time = start_time
-        power = 4.5  # Power used in Watts
-        priority_t = random.uniform(0.1, 1.0)  # Task priority between 0.1 and 1.0
-        priority_e = random.uniform(0.1, 1.0)  # Execution priority between 0.1 and 1.0
+# Function to generate data
+def generate_data(num_days):
+    base_date = datetime.utcnow()
+    for day in range(num_days):
+        for _ in range(random.randint(1, 4)):  # Assuming between 1 and 4 captures per day
+            start_hour = random.randint(6, 18)  # Capture photos only between 6 AM and 6 PM
+            start_time = base_date + timedelta(days=day, hours=start_hour, minutes=random.randint(0, 59))
+            duration = random.randint(120, 600)  # Duration between 2 minutes and 10 minutes
+            end_time = start_time + timedelta(seconds=duration)
 
-        cursor.execute('''
-            insert into camera_computer (start_time, duration, power, priority_t, priority_e)
-            values (?, ?, ?, ?, ?)
-        ''', (capture_time.strftime('%Y-%m-%d %H:%M:%S'), duration, power, priority_t, priority_e))
+            # Assuming 70% of time in imaging mode and 30% in readout mode
+            imaging_duration = duration * 0.7
+            readout_duration = duration - imaging_duration
+            power_imaging = random.uniform(2.0, 2.6)  # Realistic power consumption in imaging mode
+            power_readout = random.uniform(3.5, 4.6)  # Realistic power consumption in readout mode
+            # Calculate weighted average of power consumption
+            average_power = (power_imaging * imaging_duration + power_readout * readout_duration) / duration
 
-        # Increment the start time by the operation duration to simulate continuous data generation
-        start_time += timedelta(minutes=duration)
+            priority_d = random.uniform(0.1, 1.0)
+            priority_e = random.uniform(0.1, 1.0)
 
-    db_connection.commit()
-    print("Camera computer data generated and inserted for the entire day.")
+            cursor.execute('''
+            insert into camera_computer (start_time, end_time, duration, power, priority_d, priority_e)
+            values (?, ?, ?, ?, ?, ?)
+            ''', (int(start_time.timestamp()), int(end_time.timestamp()), duration, average_power, priority_d, priority_e))
+
+    # Save the changes to the database
+    conn.commit()
+
+# Example usage: generate data for one year (365 days)
+generate_data(365)
+
+# Close the connection to the database
+conn.close()
 
