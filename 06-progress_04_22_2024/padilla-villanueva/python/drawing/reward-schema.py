@@ -36,7 +36,7 @@ create_rectangle((3.6, 2.68), 2.4, 0.68, 'Neural Network')
 create_rectangle((3.6, 0.68), 2.4, 0.68, 'Nanosatellite')
 
 # Add the arrows to the diagram, connecting blocks
-create_arrow((2.85, 1.1), (2.85, 2.26), 'reward function', (0, 5), headless=True)
+create_arrow((2.85, 1.1), (2.85, 2.26), 'Reward', (0, 5), headless=True)
 #create_arrow((3.6, 1), (3.6, 0.36), 'reward R_t+1', (-30, -15), headless=True)
 create_arrow((4.85,2.25), (4.85, 1.1), 'Action', (0, 5), headless=True)
 create_arrow((2.45, 1.1), (2.45, 2.26), 'State', (0, -20), headless=True)
