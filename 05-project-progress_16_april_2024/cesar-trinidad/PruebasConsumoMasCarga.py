@@ -81,10 +81,10 @@ def calcular_carga_solar(altura, tiempo):
     b = 0  # Mínima potencia
     c = 0.01  # Pendiente de la curva sigmoide
     d = 720  # Punto medio de la curva sigmoide (la mitad del tiempo total)
-    
+
     # Función sigmoide para modelar el aumento gradual de la potencia
     potencia_generada = a / (1 + math.exp(-c * (tiempo - d))) + b
-    
+
     return potencia_generada
 
 # Función para simular una órbita

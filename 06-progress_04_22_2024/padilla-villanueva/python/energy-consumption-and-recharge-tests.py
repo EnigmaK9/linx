@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 EARTH_RADIUS = 6371000  # Meters
 PERIHELION_DISTANCE = 147.1e6  # Kilometers
 PERIHELION_IRRADIANCE = 1367  # W/m^2 (average solar constant)
-BATTERY_CAPACITY = 6000  # mAh (Lithium-ion battery capacity)
+BATTERY_CAPACITY = 5200  # mAh (Lithium-ion battery capacity)
 
 # System parameters
 MAX_BATTERY = BATTERY_CAPACITY  # mAh
-MIN_BATTERY = 2000.0  # mAh
+MIN_BATTERY = (BATTERY_CAPACITY/100)30  # mAh
 CAMERA_CONSUMPTION = 115.0  # mAh/hour
 PARTICLE_DETECTOR_CONSUMPTION = 288.0  # mAh/hour
 DATA_DOWNLOAD_CONSUMPTION = 1080.0  # mAh/hour
