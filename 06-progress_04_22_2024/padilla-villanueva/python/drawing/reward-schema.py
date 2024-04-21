@@ -5,6 +5,7 @@ from matplotlib.patches import FancyBboxPatch, ArrowStyle, FancyArrowPatch
 fig, ax = plt.subplots(figsize=(7.2, 3.36))
 ax.set_xlim(0, 7.2)
 ax.set_ylim(0, 3.36)
+ax.grid(True, which='both', linestyle='--', linewidth=0.5)  # Adding grid with 1.0 spacing
 ax.axis('off')  # No axis for a clean diagram
 
 def create_rectangle(center, width, height, label):
@@ -31,12 +32,12 @@ def create_arrow(start, end, text, text_offset, bidirectional=False):
 create_rectangle((3.6, 2.68), 2.4, 0.68, 'DQN')
 create_rectangle((3.6, 0.68), 2.4, 0.68, 'Nanosatellite')
 
-# Add the arrows to the diagram
+# Add the arrows to the diagram, connecting blocks
 create_arrow((3.6, 2), (3.6, 1.36), 'reward R_t', (0, 5), bidirectional=True)
 create_arrow((3.6, 1), (3.6, 0.36), 'reward R_t+1', (-30, -15))
-create_arrow((5.2, 0.68), (6.8, 0.68), 'state S_t+1', (0, 5))
 create_arrow((1.6, 2.68), (0.4, 2.68), 'action A_t', (0, 5))
 create_arrow((2, 0.68), (1.2, 0.68), 'state S_t', (0, -20))
+create_arrow((5.2, 0.68), (6.8, 0.68), 'state S_t+1', (0, 5))
 
 # Save the figure
 plt.savefig('reward.png', bbox_inches='tight')
