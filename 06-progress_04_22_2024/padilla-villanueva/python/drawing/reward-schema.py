@@ -16,9 +16,12 @@ def create_rectangle(center, width, height, label):
     ax.add_patch(rect)
     ax.text(center[0], center[1], label, ha='center', va='center', fontsize=12)
 
-def create_arrow(start, end, text, text_offset, bidirectional=False):
+def create_arrow(start, end, text, text_offset, bidirectional=False, headless=False):
     """Creates an arrow patch between two points, with an optional label."""
-    style = ArrowStyle.CurveFilledB(head_length=1.5, head_width=0.8)
+    if headless:
+        style = '-|>'
+    else:
+        style = ArrowStyle.CurveFilledB(head_length=1.5, head_width=0.8)
     arrow = FancyArrowPatch(start, end, arrowstyle=style, mutation_scale=15, lw=1.5)
     ax.add_patch(arrow)
     if bidirectional:
@@ -29,15 +32,15 @@ def create_arrow(start, end, text, text_offset, bidirectional=False):
                     xytext=text_offset, textcoords='offset points', ha='center', va='center', fontsize=10)
 
 # Add the blocks to the diagram
-create_rectangle((3.6, 2.68), 2.4, 0.68, 'DQN')
+create_rectangle((3.6, 2.68), 2.4, 0.68, 'Neural Network')
 create_rectangle((3.6, 0.68), 2.4, 0.68, 'Nanosatellite')
 
 # Add the arrows to the diagram, connecting blocks
-create_arrow((3.6, 2), (3.6, 1.36), 'reward R_t', (0, 5), bidirectional=True)
-create_arrow((3.6, 1), (3.6, 0.36), 'reward R_t+1', (-30, -15))
-create_arrow((1.6, 2.68), (0.4, 2.68), 'action A_t', (0, 5))
-create_arrow((2, 0.68), (1.2, 0.68), 'state S_t', (0, -20))
-create_arrow((5.2, 0.68), (6.8, 0.68), 'state S_t+1', (0, 5))
+create_arrow((2.85, 2.25), (2.85, 1.1), 'reward R_t', (0, 5), headless=True)
+#create_arrow((3.6, 1), (3.6, 0.36), 'reward R_t+1', (-30, -15), headless=True)
+create_arrow((4.85,2.25), (4.85, 1.1), 'action A_t', (0, 5), headless=True)
+create_arrow((2.45, 2.25), (2.45, 1.1), 'state S_t', (0, -20), headless=True)
+#create_arrow((5.2, 0.68), (6.8, 0.68), 'state S_t+1', (0, 5), headless=True)
 
 # Save the figure
 plt.savefig('reward.png', bbox_inches='tight')
