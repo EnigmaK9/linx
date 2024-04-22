@@ -8,4 +8,3 @@ create table comms_437_mhz_rx (
     priority_t real not null,     -- transmission priority
     priority_e real not null      -- execution priority
 );
-

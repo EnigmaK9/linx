@@ -8,4 +8,3 @@ create table sipm (
     priority_t real not null,     -- transmission priority
     priority_e real not null      -- execution priority
 );
-

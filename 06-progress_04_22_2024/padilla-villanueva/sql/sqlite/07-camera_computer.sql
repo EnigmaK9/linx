@@ -1,9 +1,10 @@
 create table camera_computer (
     id integer primary key,
-    start_time integer not null,  -- almacena la marca de tiempo unix para el inicio
-    end_time integer not null,    -- almacena la marca de tiempo unix para el fin
-    duration integer not null,    -- duración en segundos
-    power real not null,          -- potencia en Watts
-    priority_d real not null,     -- prioridad de descarga
-    priority_e real not null      -- prioridad de ejecución
+    start_time integer not null,  -- stores unix timestamp for the start
+    end_time integer not null,    -- stores unix timestamp for the end
+    duration integer not null,    -- duration in seconds
+    power real not null,          -- power in watts
+    voltage real not null,        -- operating voltage in volts
+    priority_t real not null,     -- transmission priority
+    priority_e real not null      -- execution priority
 );
