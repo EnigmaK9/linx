@@ -13,13 +13,13 @@ def fetch_and_display_data():
     results = cursor.fetchall()
 
     # Format and display data in a readable table format
-    print("ID  | Start Time (UTC)    | End Time (UTC)      | Duration (s) | Power (W)   | Priority D  | Priority E")
-    print("-" * 104)  # Print a divider line for clarity
+    print("ID  | Start Time (UTC)    | End Time (UTC)      | Duration (s) | Power (W) |Voltage (V)| Priority T | Priority E")
+    print("-" * 124)  # Print a divider line for clarity to accommodate the new column
 
     for row in results:
         start_time_formatted = datetime.utcfromtimestamp(row[1]).strftime('%Y-%m-%d %H:%M:%S')
         end_time_formatted = datetime.utcfromtimestamp(row[2]).strftime('%Y-%m-%d %H:%M:%S')
-        print(f"{row[0]:<3} | {start_time_formatted} | {end_time_formatted} | {row[3]:<12} | {row[4]:<9.9f} | {row[5]:<10.9f} | {row[6]:<10.9f}")
+        print(f"{row[0]:<3} | {start_time_formatted} | {end_time_formatted} | {row[3]:<12} | {row[4]:<9.2f} | {row[5]:<9.2f} | {row[6]:<10.2f} | {row[7]:<10.2f}")
 
     # Close the database connection
     conn.close()

@@ -21,16 +21,17 @@ def generate_data(num_days):
             readout_duration = duration - imaging_duration
             power_imaging = random.uniform(2.0, 2.6)  # Realistic power consumption in imaging mode
             power_readout = random.uniform(3.5, 4.6)  # Realistic power consumption in readout mode
+            voltage = random.uniform(5.0, 5.5)  # Operating voltage in volts
             # Calculate weighted average of power consumption
             average_power = (power_imaging * imaging_duration + power_readout * readout_duration) / duration
 
-            priority_d = random.uniform(0.1, 1.0)
-            priority_e = random.uniform(0.1, 1.0)
+            priority_t = random.uniform(0.1, 1.0)  # Transmission priority
+            priority_e = random.uniform(0.1, 1.0)  # Execution priority
 
             cursor.execute('''
-            insert into camera_computer (start_time, end_time, duration, power, priority_d, priority_e)
-            values (?, ?, ?, ?, ?, ?)
-            ''', (int(start_time.timestamp()), int(end_time.timestamp()), duration, average_power, priority_d, priority_e))
+            insert into camera_computer (start_time, end_time, duration, power, voltage, priority_t, priority_e)
+            values (?, ?, ?, ?, ?, ?, ?)
+            ''', (int(start_time.timestamp()), int(end_time.timestamp()), duration, average_power, voltage, priority_t, priority_e))
 
     # Save the changes to the database
     conn.commit()

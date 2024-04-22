@@ -17,14 +17,15 @@ def generate_data(num_days):
             end_time = start_time + timedelta(seconds=duration)
 
             power = random.uniform(0.5, 1.5)  # Realistic power consumption for a Cosmic Ray Detector
+            voltage = random.uniform(3.0, 5.0)  # Simulating variable operating voltages
 
-            priority_d = random.uniform(0.1, 1.0)
+            priority_t = random.uniform(0.1, 1.0)
             priority_e = random.uniform(0.1, 1.0)
 
             cursor.execute('''
-            insert into sipm (start_time, end_time, duration, power, priority_d, priority_e)
-            values (?, ?, ?, ?, ?, ?)
-            ''', (int(start_time.timestamp()), int(end_time.timestamp()), duration, power, priority_d, priority_e))
+            INSERT INTO sipm (start_time, end_time, duration, power, voltage, priority_t, priority_e)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            ''', (int(start_time.timestamp()), int(end_time.timestamp()), duration, power, voltage, priority_t, priority_e))
 
     # Save the changes to the database
     conn.commit()
