@@ -1,9 +1,10 @@
+
 create table obc (
     id integer primary key,
-    start_time text not null,
-    duration integer not null,
-    power real not null,
-    priority_t real not null,
-    priority_e real not null
+    start_time integer not null,  -- almacena la marca de tiempo unix para el inicio
+    end_time integer not null,    -- almacena la marca de tiempo unix para el fin
+    duration integer not null,    -- duración en segundos
+    power real not null,          -- potencia en Watts
+    priority_d real not null,     -- prioridad de descarga
+    priority_e real not null      -- prioridad de ejecución
 );
-
