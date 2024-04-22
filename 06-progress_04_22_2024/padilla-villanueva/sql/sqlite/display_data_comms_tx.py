@@ -14,7 +14,7 @@ def fetch_and_display_data():
 
     # Format and display data in a readable table format
     print("ID  | Start Time (UTC)     | End Time (UTC)     | Duration (s) | Power (W) | Voltage (V) | Priority T | Priority E")
-    print("-" * 125)  # Print a divider line for clarity
+    print("-" * 114)  # Print a divider line for clarity
 
     for row in results:
         start_time_formatted = datetime.utcfromtimestamp(row[1]).strftime('%Y-%m-%d %H:%M:%S')
