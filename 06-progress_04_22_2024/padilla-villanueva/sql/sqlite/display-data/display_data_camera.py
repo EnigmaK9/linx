@@ -1,9 +1,12 @@
 import sqlite3
+import os
 from datetime import datetime
 
 def fetch_and_display_data():
     # Connect to the SQLite database
-    conn = sqlite3.connect('nanoswai.db')
+    database_path = os.path.join(os.path.dirname(__file__), '..',
+    'nanoswai.db')
+    conn = sqlite3.connect(database_path)
     cursor = conn.cursor()
 
     # Execute SQL query to select all records from the table
