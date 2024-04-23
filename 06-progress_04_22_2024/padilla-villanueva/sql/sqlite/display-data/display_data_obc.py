@@ -1,8 +1,10 @@
 import sqlite3
+import os
 from datetime import datetime
 
 def fetch_and_display_data():
     # Connect to the SQLite database
+    database_path = os.path.join(os.path.dirname(__file__), '..', 'nanoswai.db')
     conn = sqlite3.connect('nanoswai.db')
     cursor = conn.cursor()
 
