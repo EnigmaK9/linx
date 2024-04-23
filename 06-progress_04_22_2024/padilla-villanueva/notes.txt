@@ -17,120 +17,120 @@
 - transmision de potencia variable, tiempo fijo de ejecucion
 - tipo de tarea potencia fija y ejecucion fija
 - una tarea de potencia fija, pero tiempo de ejecucion variable, como en
-  estatica, es una funcion que tiene un gradiente porque esta siendo
-  proporcional el valor de potencia, a el tiempo total que se
-  ejecuto, tienes 3 tareas
-  - transmision tarea separada
-  - inciden,
-  - si una tarea no se genero, vector de datos, su prioridad se
-    vuelve 0 en automatico
-    - pero si tuviste varias tareas que se ejecutaron, hay que
-      ver que tan importante es bajar esos datos, si su
-      prioridad de t es baja, si a traves de la red neuronal
-      decide que partes de la red neuronal se ejecutan
-      - tres tareas:
-      - la red neuronal se encarga de sopesarlas, relacionarlas cual de ellas
-        ejecutar o retrasar.
-        - ya no seran las 3 tareas al mismo tiempo, va a ser por lectura
-        - toda la matriz de una sola tarea, no entra el 5*5, solo el 5*1, que
-          decide se ejecuta en ese momento, decide se ejecuta o no
-          - con respecto al vector de estado, potencia, derivadas de potencia,
-            energia, si la decide ejecutar, evalua una reward function, y ve
-            que tanto se acerco despues de ejecutarla
-            - como vas por tarea, generas una reward function por tarea
-            - decides si la retrasa que evalua cuanto se acerco el estado de
-              carga a la frontera del 30%, seguimos corrieendo le controlador
-              hasta que encuentra la tarea
-              - vuelve a correr neuronal, decide si la ejecuta o no, con las
-                prioridades y todo, vuelve a mandar un valor de recompensa
-                - 97 orbitas, sumes todas las recompensas y las penalizaciones
-                  y entonces en la siguiente iteracion de red, ella entre en
-                  sus valores de recompensas, en la corrida pasada, fueron
-                  acertadas y cuales no , cuales deben seguir penalizando y
-                  cuales debe seguir premiando, eso es lo que entrena el
-                  satelite en orbita
-                  - con datos deb anco de prueba, etc, que tiene que sguir la
-                    red neuronal, es mas, si quieres, en el primer ciclo que
-                    no tenga ninguna tarea, que genere una serie de
-                    recompensas de lo que es no hacer nada, asi tiene un punto
-                    de referencia de no hacer nada, para que en la siguiente
-                    iteracion, punto a por tareas ejecutadas, 100 por ciento
-                    del estado de carga y no ejecutar nada,
-                    - en la funcion del dcoto
-                    - tiene que premiarse por tarea ejecutada
-                    - si no se ejecuta la tarea, se multiplica por 0, se
-                    - la funcion de recompensa es eficiencia, si no puntuas no
-                      estas siendo eficiente
-                      - tu funcion de recompensa, es un valor binario, 1 y 0
-                      - se hace por tarea
-                      - el de 1 y 0, vamos a hacerlo mas sencillo todavia,
-                      - un single input and output
-                      - pueda adelantar tareas, peuda retrasar tareas
-                      - pueda a partir de datos historicos decidir cuando
-                      - si las tareas no son de ejecucion sensible
-                      - si es el espectrometro, decidir ejecutarse o
-                        atrasarse
-                        - no las peude retrasar, con el valro de la prioridad
-                          de ejecucion
-                          - seria un derivado, prioridad de ser ejecutado
-                          - el siguiente paso, ella podra decir no la ejecute
-                            pero no la puedo ejecutar hasta que vuelva a estar
-                            en el punto en el que estoy ahorita
-                            - vamos a quedarnos en lo que nos dejo el pdf
-                            - una reward function por tarea
-                            - una global, esto que el vienres platico
-                            - una funcion condicional que simplifique mas
-                            - el problema, que la red neuronal este conectada
-                              o desconectada, dependiendo si es momento de
-                              ejecutar una tarea o no, la ejecuto
-                              si es momento de ejecutar una tarea, que la red
-                              neuronal, mida, analice y reciba las entradas y
-                              todo lo que se presenta, estado de carga,
-                              potenica disponible en paneles, corriente
-                              efectiva que los paneles le dan a la bateria,
-                              todas esas cosas que entran a la red neuronal,
-                              priemra y segunda derivada de potencia, de carga
-                              el historico de los valores, el tiempo del
-                              cronometro, y la matriz de propiedades del
-                              vector de la tarea, con que ahorita entregue la
-                              tarea, decida si se ejecuta si  ono
-                              - noimporta si la priemra capa o la segunda capa
-                                tiene tantas neuronas, eso no importa
-                                - yo el viernes le propuse que fuera 2 a la n
-                                  tareas, es lo de menos ahorita, vamos
-                                  - las entradas y las salidas
-                                  - entradas todo eso, salida un 1 o 0
-                                  - todo eso va a la reward function
-                                  - el controlador bateria
-                                  - de nuevo, si se vuelve a encontrar con la
-                                    tarea, vuelve a pedir el mismo proceso
-                                    - los valores de la funcion de
-                                      recompensa, las suma al final del
-                                      periodo
-                                    - la funcion de transmision sea
-                                      independiente, se lleve un beun control
-                                      de eso
-                                    - que ahi tiene el controlador
-                                    - la tarea de download va a tener su
-                                      tiempo de descarga, 0,0, donde se puede
-                                      descargar un valor
-                                      - va a tener su priorida de descarga,
-                                        su prioridad de ejecucion, que si
-                                        tengo las suficientes tareas con
-                                        prioridad alta, decidiremos cuales
-                                        descargar, tendra su ventana de
-                                        descarga, de potenica variable y
-                                        tiempo fijo
-                                        - va a ser crucial para evaluar la
-                                          red neuronal
- - potencia sobre dato, por numero de
-   datos, por volumen de datos
-            - es una prioridad que retroalimenta
-- cuales dejar para despues, cuales para mas adelante
-- tendria como tiempo de prioridad de ejecucion sobre el tiempo de ejecucion,
+estatica, es una funcion que tiene un gradiente porque esta siendo
+proporcional el valor de potencia, a el tiempo total que se
+ejecuto, tienes 3 tareas
+- transmision tarea separada
+- inciden,
+- si una tarea no se genero, vector de datos, su prioridad se
+vuelve 0 en automatico
+- pero si tuviste varias tareas que se ejecutaron, hay que
+ver que tan importante es bajar esos datos, si su
+prioridad de t es baja, si a traves de la red neuronal
+decide que partes de la red neuronal se ejecutan
+- tres tareas:
+- la red neuronal se encarga de sopesarlas, relacionarlas cual de ellas
+ejecutar o retrasar.
+- ya no seran las 3 tareas al mismo tiempo, va a ser por lectura
+- toda la matriz de una sola tarea, no entra el 5*5, solo el 5*1, que
+decide se ejecuta en ese momento, decide se ejecuta o no
+- con respecto al vector de estado, potencia, derivadas de potencia,
+energia, si la decide ejecutar, evalua una reward function, y ve
+que tanto se acerco despues de ejecutarla
+- como vas por tarea, generas una reward function por tarea
+- decides si la retrasa que evalua cuanto se acerco el estado de
+carga a la frontera del 30%, seguimos corrieendo le controlador
+hasta que encuentra la tarea
+- vuelve a correr la red neuronal, decide si la ejecuta o no, con las
+prioridades y todo, vuelve a mandar un valor de recompensa
+- 97 orbitas, sumes todas las recompensas y las penalizaciones
+y entonces en la siguiente iteracion de red, ella entre en
+sus valores de recompensas, en la corrida pasada, fueron
+acertadas y cuales no , cuales deben seguir penalizando y
+cuales debe seguir premiando, eso es lo que entrena el
+satelite en orbita
+- con datos deb anco de prueba, etc, que tiene que sguir la
+red neuronal, es mas, si quieres, en el primer ciclo que
+no tenga ninguna tarea, que genere una serie de
+recompensas de lo que es no hacer nada, asi tiene un punto
+de referencia de no hacer nada, para que en la siguiente
+iteracion, punto a por tareas ejecutadas, 100 por ciento
+del estado de carga y no ejecutar nada,
+- en la funcion del dcoto
+- tiene que premiarse por tarea ejecutada
+- si no se ejecuta la tarea, se multiplica por 0, se
+- la funcion de recompensa es eficiencia, si no puntuas no
+estas siendo eficiente
+- tu funcion de recompensa, es un valor binario, 1 y 0
+- se hace por tarea
+- el de 1 y 0, vamos a hacerlo mas sencillo todavia,
+- un single input and output
+- pueda adelantar tareas, peuda retrasar tareas
+- pueda a partir de datos historicos decidir cuando
+- si las tareas no son de ejecucion sensible
+- si es el espectrometro, decidir ejecutarse o
+atrasarse
+- no las peude retrasar, con el valro de la prioridad
+de ejecucion
+- seria un derivado, prioridad de ser ejecutado
+- el siguiente paso, ella podra decir no la ejecute
+pero no la puedo ejecutar hasta que vuelva a estar
+en el punto en el que estoy ahorita
+- vamos a quedarnos en lo que nos dejo el pdf
+- una reward function por tarea
+- una global, esto que el vienres platico
+- una funcion condicional que simplifique mas
+- el problema, que la red neuronal este conectada
+o desconectada, dependiendo si es momento de
+ejecutar una tarea o no, la ejecuto
+si es momento de ejecutar una tarea, que la red
+neuronal, mida, analice y reciba las entradas y
+todo lo que se presenta, estado de carga,
+potencia disponible en paneles, corriente
+efectiva que los paneles le dan a la bateria,
+todas esas cosas que entran a la red neuronal,
+primera y segunda derivada de potencia, de carga
+el histórico de los valores, el tiempo del
+cronómetro, y la matriz de propiedades del
+vector de la tarea, con que ahorita entregue la
+tarea, decida si se ejecuta si o no
+- No importa si la priemra capa o la segunda capa
+tiene tantas neuronas, eso no importa
+- yo el viernes le propuse que fuera 2 a la n
+tareas, es lo de menos ahorita, vamos
+- las entradas y las salidas
+- entradas todo eso, salida un 1 o 0
+- todo eso va a la reward function
+- el controlador batería
+- de nuevo, si se vuelve a encontrar con la
+tarea, vuelve a pedir el mismo proceso
+- los valores de la funcion de
+recompensa, las suma al final del
+período
+- la funcion de transmision sea
+independiente, se lleve un buen control
+de eso
+- que ahi tiene el controlador
+- la tarea de download va a tener su
+tiempo de descarga, 0,0, donde se puede
+descargar un valor
+- va a tener su prioridad de descarga,
+su prioridad de ejecucion, que si
+tengo las suficientes tareas con
+prioridad alta, decidiremos cuales
+descargar, tendrá su ventana de
+descarga, de potencia variable y
+tiempo fijo
+- va a ser crucial para evaluar la
+red neuronal
+- potencia sobre dato, por numero de
+datos, por volumen de datos
+- es una prioridad que retroalimenta
+- cuales dejar para después, cuales para mas adelante
+- tendría como tiempo de prioridad de ejecucion sobre el tiempo de ejecucion,
   uno, porque no se puede ejecutar en ningun otro punto
 - la 2408 es la banda s
-- meterle mas elementos de discresion
+- meterle mas elementos de discrecion
 - por lo que se ha estado platicando, es que los datos se descargan por la
   banda s
 - banda s es para nanosatelites y va de 2 a 4 gigahertz
@@ -151,7 +151,7 @@
 - timedelta es el tiempo de muestreo, que no son el mismo. es un minuto
 - vector de tareas, delta triangulito, cuanto dura la tarea, prioridad de
   descarga
-  - propiedades intrinsecas. potencia para ejecutar y potencia requerida para
+- propiedades intrinsecas. potencia para ejecutar y potencia requerida para
     descargar
 - todo esto, status information
 - es lo que tiene que entrar a la red neuronal
@@ -167,7 +167,7 @@ mi controlador calcula las derivadas
 - eso tambien es un estado
 - no para la manera que yo planteee, estamos yendo tarea por tarea,
   completamente desarrollado, mi intencion cuando este metiendo metodos de IA
-  - cuando estemos usando MDP markov, redes de DQN, si vamos a tener estos en su
+- cuando estemos usando MDP markov, redes de DQN, si vamos a tener estos en su
     full
 - este va a ser un output 0 1 por tarea
 - ahi esta la funcion de recompensa, esta Sj es fue ejecutada o no, si no fue
@@ -177,7 +177,7 @@ mi controlador calcula las derivadas
   varianza, cuales fueron las distancias entre t_j_E t_j_R, momento en el que se
   ejecuto y en el momento en el que tuvo que haberse ejecutado,
 - la potencia P_j_D si se descargo o no
--dj si se descargo  o no
+- dj si se descargo  o no
 - g(k) definida en la parte de abajo, no es tan importante
 va a depender del valor de k
 - no se metan en rollos, no es importante considerar esa funcion de peso
@@ -208,7 +208,7 @@ para desarrollos posteriores, si la acercamos mas al 30%, cerca
   como el alfa que tiene la salud de la bateria
 - si estas acercandote muy peligrosamente a los valroes bajos del e stado de
   carga
-  - si todo funciona, si tu red neuronal esta salvando de situaciones
+- si todo funciona, si tu red neuronal esta salvando de situaciones
     peligrosas.
 - controlador, condicional, red neuronal, recompensa y retroalimentacion
 - lo que nos diga leo, lo que tengan listo, para el dia de mañana y rotamos,
