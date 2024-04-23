@@ -1,43 +1,41 @@
 22 april 2024
-- ayuda a simplificar las cosas a como las estan planteando
-- me sugirió que en lugar de un vctor de un ceros y unos
-- cinco tareas, manejaras 5 cerso y un uno, output de ejecutar un solo 0
-- o un solo 1
+- Ayuda a simplificar las cosas a tal como las están planteando.
+Me sugirió que, en lugar de un vector de ceros y unos, manejara cinco ceros y un uno,
+cuyo output sería ejecutar un solo 0 o un solo 1.
 - entonces es la red neuronal
-- el pdf ya conclusite tus datos de confidencialidad y todo
-- no he visto que te agreguen al otro grupo
-- funcion de recompensa por tarea
-- 70 segundos
-- 10 segundos, no hay red neuronal
+- Sobre si Marlene ya tenía firmada la hoja de confidencialidad.
+- Aún no agregan a Marlene al otro grupo.
+- Función de recompensa por tarea.
+- 70 segundos.
+- 10 segundos, no hay red neuronal.
 - hasta que haya una tarea ejecutar
--  si si hay una tarea a ejecutar, se echa una red neuronal a ejecutar
-- transmision de datos como un vector independiente
-- tienes dos  tipos de tareas
-- tienes tres tipos de tareas
-- transmision de potencia variable, tiempo fijo de ejecucion
-- tipo de tarea potencia fija y ejecucion fija
-- una tarea de potencia fija, pero tiempo de ejecucion variable, como en
-estatica, es una funcion que tiene un gradiente porque esta siendo
-proporcional el valor de potencia, a el tiempo total que se
-ejecuto, tienes 3 tareas
-- transmision tarea separada
-- inciden,
-- si una tarea no se genero, vector de datos, su prioridad se
-vuelve 0 en automatico
-- pero si tuviste varias tareas que se ejecutaron, hay que
+- Si hay una tarea a ejecutar, se inicia la ejecución de la red neuronal.
+- Transmisión de datos como un vector independiente.
+- Tienes tres tipos de tareas
+- Transmisión de datos, que tiene valores de potencia (W) variables y un tiempo
+fijo de ejecución.
+- Tareas de potencia fija y tiempo de ejecución fija.
+- Tareas de potencia fija pero de tiempo de ejecución variable.
+- como en Estática, es una funcion que tiene un gradiente
+porque esproporcional el valor de potencia, a el tiempo total que se
+ejecuto
+- Inciden
+- Si una tarea no se genera, su prioridad se vuelve cero y el vector
+de datos también se vuelve cero automáticamente.
+- Pero si tuviste varias tareas que se ejecutaron, hay que
 ver que tan importante es bajar esos datos, si su
-prioridad de t es baja, si a traves de la red neuronal
-decide que partes de la red neuronal se ejecutan
-- tres tareas:
-- la red neuronal se encarga de sopesarlas, relacionarlas cual de ellas
-ejecutar o retrasar.
-- ya no seran las 3 tareas al mismo tiempo, va a ser por lectura
-- toda la matriz de una sola tarea, no entra el 5*5, solo el 5*1, que
-decide se ejecuta en ese momento, decide se ejecuta o no
-- con respecto al vector de estado, potencia, derivadas de potencia,
-energia, si la decide ejecutar, evalua una reward function, y ve
-que tanto se acerco despues de ejecutarla
-- como vas por tarea, generas una reward function por tarea
+prioridad de t es baja, la red neuronal decide que tareas se
+ejecutan.
+- tres tareas: la red neuronal se encarga de sopesarlas y
+relacionar cual de ellas ejecutar o retrasar.
+- ya no seran las 3 tareas al mismo tiempo, va a ser por lectura.
+- Toda la matriz de una sola tarea, ya no es 5x5, solo 5x1, que
+decide si se ejecuta en ese momento.
+- Con respecto al vector de estado, potencia, derivadas de potencia,
+energia, si decide ejecutarla, evalua una función de recompensa,
+y ve que tanto se acerca despues de ejecutarla.
+- Como vas por tarea, generas una función de recompensa por tarea.
+--------------------------
 - decides si la retrasa que evalua cuanto se acerco el estado de
 carga a la frontera del 30%, seguimos corrieendo le controlador
 hasta que encuentra la tarea
@@ -219,3 +217,4 @@ para desarrollos posteriores, si la acercamos mas al 30%, cerca
 - lo que nos retroalimentaron, planteamos una nueva vision para la nueva semana
   y rotamos parejas
 - vale
+
