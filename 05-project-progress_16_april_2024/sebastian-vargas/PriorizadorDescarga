@@ -1,0 +1,42 @@
+"""
+import os
+
+# Ruta de la carpeta local
+ruta_carpeta = "/Users/tatan/OneDrive/Documents/LINX/Prueba1"
+
+# Cambiar el directorio de trabajo a la carpeta especificada
+os.chdir(ruta_carpeta)
+
+# Acciones que se desean realizar dentro de la carpeta
+print(f"Estás actualmente en el directorio: {os.getcwd()}")
+
+# Ejemplo de acciones: listar archivos y carpetas
+archivos_y_carpetas = os.listdir()
+print(f"Archivos y carpetas en la carpeta: {archivos_y_carpetas}")
+"""
+
+import os
+
+def seleccionar_archivos(carpeta, limite_mb):
+    limite_bytes = limite_mb * 1024 * 1024
+    print(limite_bytes, limite_mb)
+    archivos = [(archivo, os.path.getsize(os.path.join(carpeta, archivo)))
+                for archivo in os.listdir(carpeta) if os.path.isfile(os.path.join(carpeta, archivo))]
+    archivos.sort(key=lambda x: x[1], reverse=True)  # Opcionalmente, ordenar por tamaño
+
+    total_seleccionado = 0
+    seleccionados = []
+
+    for archivo, tamaño in archivos:
+        if total_seleccionado + tamaño <= limite_bytes:
+            seleccionados.append(archivo)
+            total_seleccionado += tamaño
+
+    return seleccionados, total_seleccionado
+
+# Uso de la función
+carpeta =  "/Users/tatan/OneDrive/Documents/LINX/Prueba1"
+limite_mb = 54
+archivos_seleccionados, total_bytes = seleccionar_archivos(carpeta, limite_mb)
+print("Archivos seleccionados:", archivos_seleccionados)
+print("Total de bytes:", total_bytes)
