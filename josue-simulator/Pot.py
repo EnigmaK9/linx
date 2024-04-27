@@ -40,13 +40,13 @@ def EPS(PV, dt):  #Init: lista de condiciones iniciales P, V
 def OBC(PV, dt):
     '''
     OBC
-        On Board Computer
+        On Board Computer.
 
     Subsistema.
         CORAL, IA.
 
     Función de Python iterativa.
-        Esta función cálcula la Energia disipada
+        Esta función calcula la energía disipada
         en un paso (dt) y la corriente que demanda.
 
     Datos de entrada:
@@ -101,14 +101,14 @@ def COMMRX(PV, dt):  #Init: lista de condiciones iniciales P, V, dt. COMMS RX 43
 def Camera(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. Camara Multiespectral
     '''
     Camera
-        Camara Multiespectral
+        Cámara Multiespectral
 
     Subsistema.
-        Camara Multiespectral
+        Cámara Multiespectral
         Se poseen tres modelos con diferentes potencias.
 
     Función de Python iterativa con duración:
-        Se realizará un pasaje cada cierta orbita,
+        Se realizará un pasaje cada cierta órbita,
         desde un tiempo inicial y durante cierto tiempo dt consumirá energía
         hasta llegar al tiempo final.
 
@@ -118,13 +118,13 @@ def Camera(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. C
                     eso puede modificarse si se quiere
 
             Init[1]:  Voltaje Operacional [V]. Debe ser un número positivo
-                *21/02/24 Se supondra constante V = 5 [V], P = 4.6 [W]
+                *21/02/24 Se supondrá constante V = 5 [V], P = 4.6 [W]
 
             Init[2]: Órbita, es un numero del 1 al 15, indica la Órbita de inicio del evento.
 
-            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (Orbita de 500 km).
+            Init[3]: es el minuto de inicio. Puede ir de 0 a 94.6 [min]. (Órbita de 500 km).
 
-            Init[4]: Duración de la actividad [mín]
+            Init[4]: Duración de la actividad [min]
 
         t:  tiempo actual [min].
 
@@ -156,11 +156,11 @@ def COMMTX_MHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
 
     Subsistema.
         Telecomunicaciones, en MHz.
-        Se realizarán pasajes cada cierta orbita,
+        Se realizarán pasajes cada cierta órbita,
         desde un tiempo inicial y durante cierto tiempo.
 
     Función de Python iterativa con duración:
-        Se realizará un pasaje cada cierta orbita,
+        Se realizará un pasaje cada cierta órbita,
         desde un tiempo inicial y durante cierto tiempo dt consumirá energía
         hasta llegar al tiempo final.
 
@@ -174,7 +174,7 @@ def COMMTX_MHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
 
             Init[2]: Órbita, es un numero del 1 al 15, indica la Órbita de inicio del evento.
 
-            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (Orbita de 500 km).
+            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (órbita de 500 km).
 
             Init[4]: Duración de la actividad [mín]
 
@@ -208,11 +208,11 @@ def COMMTX_GHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
 
     Subsistema.
         Telecomunicaciones, en GHz.
-        Se realizarán pasajes cada cierta orbita,
+        Se realizarán pasajes cada cierta órbita,
         desde un tiempo inicial y durante cierto tiempo.
 
     Función de Python iterativa con duración:
-        Se realizará un pasaje cada cierta orbita,
+        Se realizará un pasaje cada cierta órbita,
         desde un tiempo inicial y durante cierto tiempo dt consumirá energía
         hasta llegar al tiempo final.
 
@@ -226,7 +226,7 @@ def COMMTX_GHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
 
             Init[2]: Órbita, es un numero del 1 al 15, indica la Órbita de inicio del evento.
 
-            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (Orbita de 500 km).
+            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (órbita de 500 km).
 
             Init[4]: Duración de la actividad [mín]
 
@@ -253,7 +253,7 @@ def COMMTX_GHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
         E = P*(dt/3600) #Energía = Potencia * tiempo (t en s se convierte a horas: 3600 s = 1 h)
     return E, I, P
 
-def Panel(Init, t0ciudad, ts, dt): #ts: hora de la orbita desde un punto de referencia (Polo sur)
+def Panel(Init, t0ciudad, ts, dt): #ts: hora de la órbita desde un punto de referencia (Polo sur)
     '''
     Panel
         Paneles Solares
@@ -261,7 +261,7 @@ def Panel(Init, t0ciudad, ts, dt): #ts: hora de la orbita desde un punto de refe
     Subsistema
         Se encarga de modelar el comportamiento del panel solar.
         Durante el día (t <= 47.3 mín) el panel simulará la forma de la
-        potencia como si estuviera en orbita de 500 km.
+        potencia como si estuviera en órbita de 500 km.
         Durante la noche (47.3 mín <= t <= 94.6) el panel tendrá
         potencia cero.
 
@@ -283,10 +283,11 @@ def Panel(Init, t0ciudad, ts, dt): #ts: hora de la orbita desde un punto de refe
     incl = 97.40176 * np.pi/180 #inclinación [rad]
     arg = t0ciudad[3] #argumento [rad]
 
-    #Funcion potencia modificada para orbitas circulares SSO a 500 km
+    #función potencia modificada para órbitas circulares SSO a 500 km
     #np.pi/720 rotación de la tierra por minuto [rad]
     Pp = Irr * a * aeff * peff * (np.cos(Omega)*np.cos(0.0011069*60*ts + arg) - \
-        np.cos(incl)*np.sin(Omega)*np.sin(0.0011069*60*ts + arg)) #0.0011069 rad/s: freq, angular orbital
+        np.cos(incl)*np.sin(Omega)*np.sin(0.0011069*60*ts + arg))
+    #0.0011069 rad/s: freq, angular orbital
 
     if Pp > 0: #lado diurno
         Ep = Pp * dt/3600 #Wh
@@ -303,10 +304,11 @@ def Battery(Init, q, E, I, P):
         Fuente de Poder
 
     Fuente.
-        Durante la noche será una Fuente, se descargarán las baterías, podría llegar a ser dependiente del tiempo.
+        Durante la noche será una Fuente, se descargarán las baterías, podría
+        llegar a ser dependiente del tiempo.
         Durante el día podría tener diferentes estrategias de carga:
             1) Cargar a máximo poder, disminuye el tiempo.
-            2) Cargar distribuyendo la carga durante la orbita, disminuye la potencia y la corriente de carga.
+            2) Cargar distribuyendo la carga durante la órbita, disminuye la potencia y la corriente de carga.
 
     Función de Python.
         Se usa iterativamente para encontrar la energía que consume el
@@ -320,17 +322,17 @@ def Battery(Init, q, E, I, P):
             Init[3]: Corriente de Descarga [mA]
             Init[4]: Almacenamiento Total [mAh]
 
-            Los siguientes elementos de Init no se ocupan en esta función pero estan en la lista:
-            Init[5]: Porcentaje inicial de bateria entre 0 y 100 [%]
+            Los siguientes elementos de Init no se ocupan en esta función pero están en la lista:
+            Init[5]: Porcentaje inicial de batería entre 0 y 100 [%]
             Init[6]: Porcentaje de seguridad [%]
             Init[7]: Porcentaje mínimo [%]
 
         q: Almacenamiento actual
-        E: Lista de energias de los subsistemas para un dt.
+        E: Lista de energías de los subsistemas para un dt.
         I: Lista de corrientes de los subsistemas para un dt.
         P: Lista de potencias de los subsistemas para un dt.
 
-        ts: tiempo local del satelite. Va de 0 a 94.6 [min]
+        ts: tiempo local del satélite. Va de 0 a 94.6 [min]
         dt: tiempo [s]. Step, Paso.
 
     Datos de salida:
@@ -362,9 +364,9 @@ def Battery(Init, q, E, I, P):
     PcMax = Vc*Ic/1000 #Potencia de carga maxima = Voltaje*corriente [W]
     PdMax = Vd*Id/1000 #Potencia de descarga maxima = Voltaje*corriente [W]
 
-    q = q + E1 #Energia actual de la bateria luego de un dt
+    q = q + E1 #Energía actual de la batería luego de un dt
 
-    if Q > q: #le falta energia
+    if Q > q: #le falta energía
         E1 = q
 
     else:  #Carga Máxima
@@ -373,7 +375,7 @@ def Battery(Init, q, E, I, P):
     return E1, I1, P1
 
 def Orbita(t): #Número de Órbitas Completadas
-    return int(t/94.6) #94.6 mín es el período a 500 km
+    return int(t/94.6) #94.6 min es el período a 500 km
 
 def VecEventos(t, Init):
     '''
@@ -385,7 +387,7 @@ def VecEventos(t, Init):
         eventos programados. Devuelve 1 si el evento esta en ejecución y
         0 en caso contrario.
 
-        Tambien puede DETENER la ejecución del programa si encuentra algún incio
+        También puede DETENER la ejecución del programa si encuentra algún inicio
         del programa aún cuando no ha acabado el anterior
 
         Luego revisa cuantas tareas van a ejecutarse en ese momento.
@@ -398,7 +400,7 @@ def VecEventos(t, Init):
         Init: Lista de eventos, cada evento está compuesto de:
             Init[0]: Tiempo inicial en formato ISO 8601 'HH:MM:SS'
     '''
-    Vec = [] #Este vector tendra unos y ceros, dependiendo si el programa se activa o no
+    Vec = [] #Este vector tendrá unos y ceros, dependiendo si el programa se activa o no
     for i in Init:
         T_Inicio = i[0]*60 + i[1] + i[2]/60 #Convierte las horas y los segundos a minutos
         T_final = T_Inicio + i[3]
@@ -581,9 +583,9 @@ PV_COMMTX_MHz =  ListaPV[4] #P, V
 PV_COMMTX_GHz =  ListaPV[5] #P, V
 
 
-#Evento: ['HH:MM:SS', T]
+# Evento: ['HH:MM:SS', T]
 #-------------------------------------------
-#Camara
+# Cámara
 Init_Camera = Asignar_Evento_Camara('EventCamera.csv')
 
 #-------------------------------------------
