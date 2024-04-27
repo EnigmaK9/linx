@@ -614,7 +614,7 @@ Init_COMMTX_GHz = Asignar_Evento_COMMTX_GHz('EventCOMMGHZ.csv')
 Init_Panel = AsignarPanel('Panel.csv')
 
 #-------------------------------------------
-# Condiciones Inciales Batería
+# Condiciones Iniciales Batería
 # Vc, Ic, Vd, Id, Q, Q% inicial, Q% de Seguridad, Q% mínimo
 Init_Battery = AsignarBateria('Bateria.csv')
 
