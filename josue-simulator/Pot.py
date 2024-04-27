@@ -64,8 +64,8 @@ def OBC(PV, dt):
     P = PV[0]
     V = PV[1]
 
-    I = (P/V)*1000 #Corriente = Potencia/Voltaje, *1000 para convertir de A a mA
-    E = P*(dt/3600) #Energía = Potencia * tiempo (t en mín se convierte a horas 60 mín = 1 h)
+    I = (P/V) * 1000 # Corriente = Potencia / Voltaje, *1000 para convertir de A a mA
+    E = P * (dt / 3600) # Energía = Potencia * tiempo (t en min se convierte a horas 60 min = 1 h)
     return E, I, P
 
 def COMMRX(PV, dt):  #Init: lista de condiciones iniciales P, V, dt. COMMS RX 437 MHz
@@ -145,8 +145,8 @@ def Camera(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. C
         P = PV[0] #Potencia
         V = PV[1] #Voltaje
 
-        I = P/V*1000 #Corriente = Potencia/Voltaje [mA]
-        E = P*(dt/3600) # Energía = Potencia * tiempo
+        I = P / V * 1000 #Corriente = Potencia/Voltaje [mA]
+        E = P * (dt / 3600) # Energía = Potencia * tiempo
         # (t en s se convierte a horas: 3600 s = 1 h)
     return E, I, P
 
@@ -251,7 +251,7 @@ def COMMTX_GHz(PV, Init, t, dt):
         P = PV[0] # Potencia
         V = PV[1] # Voltaje
 
-        I = P/V*1000 # Corriente = Potencia/Voltaje [mA]
+        I = P / V *1000 # Corriente = Potencia/Voltaje [mA]
         E = P*(dt/3600) # Energía = Potencia * tiempo (t en s se convierte a horas: 3600 s = 1 h)
     return E, I, P
 
@@ -744,3 +744,5 @@ ax2.grid(color = 'b', linestyle = '-.')
 ax2.legend(loc = 'lower right')
 
 plt.show()
+
+
