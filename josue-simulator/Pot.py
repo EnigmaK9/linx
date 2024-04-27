@@ -95,10 +95,10 @@ def COMMRX(PV, dt):  #Init: lista de condiciones iniciales P, V, dt. COMMS RX 43
     V = PV[1]
 
     I = (P/V)*1000 #Corriente = Potencia/Voltaje, *1000 para convertir de A a mA
-    E = P*(dt/3600) #Energía = Potencia * tiempo (t en mín se convierte a horas 60 mín = 1 h)
+    E = P*(dt/3600) #Energía = Potencia * tiempo (t en mín se convierte a horas 60 min = 1 h)
     return E, I, P
 
-def Camera(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. Camara Multiespectral
+def Camera(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. Cámara Multiespectral
     '''
     Camera
         Cámara Multiespectral
@@ -141,12 +141,13 @@ def Camera(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. C
         E = 0
         I = 0
         P = 0
-    else: #Hay alguna tarea activa, Event indica dicha tarea
+    else: # Hay alguna tarea activa, Event indica dicha tarea
         P = PV[0] #Potencia
         V = PV[1] #Voltaje
 
         I = P/V*1000 #Corriente = Potencia/Voltaje [mA]
-        E = P*(dt/3600) #Energía = Potencia * tiempo (t en s se convierte a horas: 3600 s = 1 h)
+        E = P*(dt/3600) # Energía = Potencia * tiempo
+        # (t en s se convierte a horas: 3600 s = 1 h)
     return E, I, P
 
 def COMMTX_MHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. COMMS TX 437 MHz
@@ -170,13 +171,13 @@ def COMMTX_MHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
                     eso puede modificarse si se quiere
 
             Init[1]:  Voltaje Operacional [V]. Debe ser un número positivo
-                *21/02/24 Se supondra constante P = 7.2 [W], V = 3.6 [V]
+                *21/02/24 Se supondrá constante P = 7.2 [W], V = 3.6 [V]
 
             Init[2]: Órbita, es un numero del 1 al 15, indica la Órbita de inicio del evento.
 
-            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (órbita de 500 km).
+            Init[3]: es el minuto de inicio. Puede ir de 0 a 94.6 [min]. (órbita de 500 km).
 
-            Init[4]: Duración de la actividad [mín]
+            Init[4]: Duración de la actividad [min]
 
         t:  tiempo actual [min].
 
@@ -189,7 +190,7 @@ def COMMTX_MHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
     '''
     Logic, Event = VecEventos(t, Init) # indica si hay alguna tarea activa
 
-    if Logic == 0: #no está activado
+    if Logic == 0: # no está activado
         E = 0
         I = 0
         P = 0
@@ -201,7 +202,8 @@ def COMMTX_MHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
         E = P*(dt/3600) #Energía = Potencia * tiempo (t en s se convierte a horas: 3600 s = 1 h)
     return E, I, P
 
-def COMMTX_GHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, T. COMMS TX 2.4 GHz
+def COMMTX_GHz(PV, Init, t, dt):
+    # Init: lista de condiciones iniciales P, V, t0, T. COMMS TX 2.4 GHz
     '''
     COMMTXGHz
         Communication transmitter
@@ -226,9 +228,9 @@ def COMMTX_GHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
 
             Init[2]: Órbita, es un numero del 1 al 15, indica la Órbita de inicio del evento.
 
-            Init[3]: es el mínuto de inicio. Puede ir de 0 a 94.6 [mín]. (órbita de 500 km).
+            Init[3]: es el minuto de inicio. Puede ir de 0 a 94.6 [min]. (órbita de 500 km).
 
-            Init[4]: Duración de la actividad [mín]
+            Init[4]: Duración de la actividad [min]
 
         t:  tiempo actual [min].
 
@@ -241,36 +243,37 @@ def COMMTX_GHz(PV, Init, t, dt):#Init: lista de condiciones iniciales P, V, t0, 
     '''
     Logic, Event = VecEventos(t, Init)
 
-    if Logic == 0: #no está activado
+    if Logic == 0: # no está activado
         E = 0
         I = 0
         P = 0
-    else: #Hay alguna tarea activa, Event indica dicha tarea
-        P = PV[0] #Potencia
-        V = PV[1] #Voltaje
+    else: # Hay alguna tarea activa, Event indica dicha tarea
+        P = PV[0] # Potencia
+        V = PV[1] # Voltaje
 
-        I = P/V*1000 #Corriente = Potencia/Voltaje [mA]
-        E = P*(dt/3600) #Energía = Potencia * tiempo (t en s se convierte a horas: 3600 s = 1 h)
+        I = P/V*1000 # Corriente = Potencia/Voltaje [mA]
+        E = P*(dt/3600) # Energía = Potencia * tiempo (t en s se convierte a horas: 3600 s = 1 h)
     return E, I, P
 
-def Panel(Init, t0ciudad, ts, dt): #ts: hora de la órbita desde un punto de referencia (Polo sur)
+def Panel(Init, t0ciudad, ts, dt):
+    # ts: hora de la órbita desde un punto de referencia (Polo sur)
     '''
     Panel
         Paneles Solares
 
     Subsistema
         Se encarga de modelar el comportamiento del panel solar.
-        Durante el día (t <= 47.3 mín) el panel simulará la forma de la
+        Durante el día (t <= 47.3 min) el panel simulará la forma de la
         potencia como si estuviera en órbita de 500 km.
-        Durante la noche (47.3 mín <= t <= 94.6) el panel tendrá
+        Durante la noche (47.3 min <= t <= 94.6) el panel tendrá
         potencia cero.
 
     Función Iterativa con if
         Se usa iterativamente para encontrar la energía que consume el
         subsistema en un paso (step, dt) pequeño de tiempo.
         El if sirve para separar el día de la noche.
-        El tiempo sera local para el satelite, es decir
-                    0 mín <= t <= 94.6
+        El tiempo sera local para el satélite, es decir
+                    0 min <= t <= 94.6
     '''
     Vop = Init[0] # V
     a = Init[1] # m^2
@@ -278,13 +281,14 @@ def Panel(Init, t0ciudad, ts, dt): #ts: hora de la órbita desde un punto de ref
     peff = Init[3] #0.0 - 1.0
     Irr = Init[4] # W/m^2
 
-    t0 = t0ciudad[0]*60*60 + t0ciudad[1] + t0ciudad[2]/60 #Tiempo del pasaje sobre la ciudad
+    t0 = t0ciudad[0]*60*60 + t0ciudad[1] + t0ciudad[2]/60
+    # Tiempo del pasaje sobre la ciudad
     Omega = t0 * np.pi/720 - np.pi #R.A. Nodo de ascenso [rad]
-    incl = 97.40176 * np.pi/180 #inclinación [rad]
-    arg = t0ciudad[3] #argumento [rad]
+    incl = 97.40176 * np.pi/180 # inclinación [rad]
+    arg = t0ciudad[3] # argumento [rad]
 
-    #función potencia modificada para órbitas circulares SSO a 500 km
-    #np.pi/720 rotación de la tierra por minuto [rad]
+    # función potencia modificada para órbitas circulares SSO a 500 km
+    # np.pi/720 rotación de la tierra por minuto [rad]
     Pp = Irr * a * aeff * peff * (np.cos(Omega)*np.cos(0.0011069*60*ts + arg) - \
         np.cos(incl)*np.sin(Omega)*np.sin(0.0011069*60*ts + arg))
     #0.0011069 rad/s: freq, angular orbital
@@ -308,7 +312,8 @@ def Battery(Init, q, E, I, P):
         llegar a ser dependiente del tiempo.
         Durante el día podría tener diferentes estrategias de carga:
             1) Cargar a máximo poder, disminuye el tiempo.
-            2) Cargar distribuyendo la carga durante la órbita, disminuye la potencia y la corriente de carga.
+            2) Cargar distribuyendo la carga durante la órbita,
+            disminuye la potencia y la corriente de carga.
 
     Función de Python.
         Se usa iterativamente para encontrar la energía que consume el
@@ -322,7 +327,8 @@ def Battery(Init, q, E, I, P):
             Init[3]: Corriente de Descarga [mA]
             Init[4]: Almacenamiento Total [mAh]
 
-            Los siguientes elementos de Init no se ocupan en esta función pero están en la lista:
+            Los siguientes elementos de Init no se ocupan en esta
+            función pero están en la lista:
             Init[5]: Porcentaje inicial de batería entre 0 y 100 [%]
             Init[6]: Porcentaje de seguridad [%]
             Init[7]: Porcentaje mínimo [%]
@@ -340,16 +346,16 @@ def Battery(Init, q, E, I, P):
         I: Corriente necesaria para alimentar el subsistema [mA]
     '''
 
-    #Condiciones iniciales:
-    #Carga
+    # Condiciones iniciales:
+    # Carga
     Vc = Init[0] # V
     Ic = Init[1] # mA
 
-    #Descarga
+    # Descarga
     Vd = Init[2] # V
     Id = Init[3] # mA
 
-    #Almacenamiento
+    # Almacenamiento
     Q = Init[4] # Wh
 
     E1 = 0
@@ -357,25 +363,25 @@ def Battery(Init, q, E, I, P):
     P1 = 0
 
     for i in range(len(E)):
-        P1 = P1 + P[i] #Potencia Neta
+        P1 = P1 + P[i] # Potencia Neta
         I1 = I1 + I[i]
-        E1 = E1 + E[i] #Energía Neta
+        E1 = E1 + E[i] # Energía Neta
 
-    PcMax = Vc*Ic/1000 #Potencia de carga maxima = Voltaje*corriente [W]
-    PdMax = Vd*Id/1000 #Potencia de descarga maxima = Voltaje*corriente [W]
+    PcMax = Vc*Ic/1000 # Potencia de carga maxima = Voltaje*corriente [W]
+    PdMax = Vd*Id/1000 # Potencia de descarga maxima = Voltaje*corriente [W]
 
-    q = q + E1 #Energía actual de la batería luego de un dt
+    q = q + E1 # Energía actual de la batería luego de un dt
 
-    if Q > q: #le falta energía
+    if Q > q: # le falta energía
         E1 = q
 
-    else:  #Carga Máxima
+    else:  # Carga Máxima
         E1 = Q
 
     return E1, I1, P1
 
-def Orbita(t): #Número de Órbitas Completadas
-    return int(t/94.6) #94.6 min es el período a 500 km
+def Orbita(t): # Número de Órbitas Completadas
+    return int(t/94.6) # 94.6 min es el período a 500 km
 
 def VecEventos(t, Init):
     '''
@@ -400,45 +406,51 @@ def VecEventos(t, Init):
         Init: Lista de eventos, cada evento está compuesto de:
             Init[0]: Tiempo inicial en formato ISO 8601 'HH:MM:SS'
     '''
-    Vec = [] #Este vector tendrá unos y ceros, dependiendo si el programa se activa o no
+    Vec = [] # Este vector tendrá unos y ceros, dependiendo si el programa se activa o no
     for i in Init:
-        T_Inicio = i[0]*60 + i[1] + i[2]/60 #Convierte las horas y los segundos a minutos
+        T_Inicio = i[0]*60 + i[1] + i[2]/60
+        # Convierte las horas y los segundos a minutos
         T_final = T_Inicio + i[3]
         if t >= T_Inicio and t <= T_final:
             Vec.append(1)
         else:
             Vec.append(0)
 
-    j = 0 #contador, sirve para verificar el estado de los eventos programados
-    for k in Vec: #Suma todos los elementos del vector
+    j = 0
+    # contador, sirve para verificar el estado de los eventos programados
+    for k in Vec:
+        # Suma todos los elementos del vector
         j = j + k
 
-    cont = 0 #Contador
-    event = 0 #el número del evento activo
+    cont = 0 # Contador
+    event = 0 # el número del evento activo
 
-    if j == 0: #si el tiempo no entra en ningún rango entonces la energía del subsistema es cero
+    if j == 0:
+        # si el tiempo no entra en ningún rango
+        # entonces la energía del subsistema es cero
         event = 0
-    elif j == 1: #si hay un evento activo
+    elif j == 1: # si hay un evento activo
         for m in Vec:
             if m == 1:
-                event = cont #número del evento activo (Int[event])
+                event = cont # número del evento activo (Int[event])
             cont = cont + 1
-        #print("El evento es el numero %2d" % (event))
-    else: #dos o más eventos se inician sin haber acabado un evento
-        sys.exit("Error. Dos o más eventos se superponen")  #cancela la ejecución
+        # print("El evento es el numero %2d" % (event))
+    else: # dos o más eventos se inician sin haber acabado un evento
+        sys.exit("Error. Dos o más eventos se superponen")
+        # cancela la ejecución
     return j, event
 
 def AsignarPV(Archivo):
-    PV_EPS =     [] #P, V
-    PV_OBC =     [] #P, V
-    PV_COMMRX =  [] #P, V
-    PV_Camera =  [] #P, V
-    PV_COMMTX_MHZ =  [] #P, V
-    PV_COMMTX_GHZ =  [] #P, V
+    PV_EPS =     [] # P, V
+    PV_OBC =     [] # P, V
+    PV_COMMRX =  [] # P, V
+    PV_Camera =  [] # P, V
+    PV_COMMTX_MHZ =  [] # P, V
+    PV_COMMTX_GHZ =  [] # P, V
 
     List = []
 
-    #Abrir archivo de Potencia y Voltaje
+    # Abrir archivo de Potencia y Voltaje
     with open(Archivo, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -559,7 +571,7 @@ def Ciudad(Archivo):
     return List
 
 def argumento(incl, Lat):
-    #Metodo numerico para obtener el angulo inicial de la simulación (la fase)
+    # Método numérico para obtener el angulo inicial de la simulación (la fase)
     aux = 2
     arg = 0
     while np.abs(aux - np.cos(np.pi/2 - Lat*np.pi/180) ) > 0.0001:
@@ -569,10 +581,10 @@ def argumento(incl, Lat):
 
 #-------------------------------------------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------------------
-#Condiciones Iniciales
+# Condiciones Iniciales
 
-#PV= [P, V]
-#Condiciones iniciales subsistemas
+# PV= [P, V]
+# Condiciones iniciales subsistemas
 ListaPV = AsignarPV('InitPV.csv')
 
 PV_EPS =     ListaPV[0] #P, V
@@ -589,25 +601,25 @@ PV_COMMTX_GHz =  ListaPV[5] #P, V
 Init_Camera = Asignar_Evento_Camara('EventCamera.csv')
 
 #-------------------------------------------
-#Telemetría
+# Telemetría
 Init_COMMTX_MHz = Asignar_Evento_COMMTX_MHz('EventTelemetry.csv')
 
 #-------------------------------------------
-#Telemetría
+# Telemetría
 Init_COMMTX_GHz = Asignar_Evento_COMMTX_GHz('EventCOMMGHZ.csv')
 
 #-------------------------------------------
-#condiciones iniciales Panel
-#Init[ V [V], area [m^2], a efectiva = [0,78], P eff = [0.31], Irr = [1365] ]
+# condiciones iniciales Panel
+# Init[ V [V], area [m^2], a efectiva = [0,78], P eff = [0.31], Irr = [1365] ]
 Init_Panel = AsignarPanel('Panel.csv')
 
 #-------------------------------------------
-#Condiciones Inciales Bateria
-#Vc, Ic, Vd, Id, Q, Q% inicial, Q% de Seguridad, Q% mínimo
+# Condiciones Inciales Batería
+# Vc, Ic, Vd, Id, Q, Q% inicial, Q% de Seguridad, Q% mínimo
 Init_Battery = AsignarBateria('Bateria.csv')
 
-#-------------------------------------------
-#Ciudad
+# -------------------------------------------
+# Ciudad
 CDMX = Ciudad('CDMX.csv')
 arg = argumento(97.4, CDMX[3])
 print(arg)
@@ -616,24 +628,24 @@ t0CDMX = [CDMX[0], CDMX[1], CDMX[2], arg] #tiempo cero, HH,MM,SS,Latitud del Pas
 
 
 #-------------------------------------------
-#Configuración
+# Configuración
 
 Configuracion = Config('Config.csv')
 
-t = 0 #tiempo cero [min]. Reloj de la simulación
-dt = Configuracion[0] #segundos. Step
-Tiempo = Configuracion[1] #horas de visualización
+t = 0 # tiempo cero [min]. Reloj de la simulación
+dt = Configuracion[0] # segundos. Step
+Tiempo = Configuracion[1] # horas de visualización
 #-------------------------------------------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------------------------------------
-# MAIN PROGRAMM
+# MAIN PROGRAM
 
-EGraph = [] #lista de energías de la bateria para graficar[Wh]
+EGraph = [] #lista de energías de la batería para graficar[Wh]
 PGraph = [] #lista de la suma de las potencias [W] en el tiempo
 IGraph = [] #lista de la suma de corrientes [mA] en el tiempo
 tGraph = [] #lista del tiempo para gráficar [mín]
 
 
-E_Batt_actual = Init_Battery[4]*Init_Battery[5] #Energía inicial
+E_Batt_actual = Init_Battery[4]*Init_Battery[5] # Energía inicial
 P_actual = 0 #Potencia Inicial
 I_actual = 0 #corriente Inicial
 
@@ -646,13 +658,13 @@ tGraph.append(t)
 # loop principal
 
 while t <= Tiempo*60: # se convierte Tiempo a minutos
-    Edt = [0]*8 #Energía consumida por cada subsistema en un dt
-    Idt = [0]*8 #Corriente demandada por cada subsistema en un dt
-    Pdt = [0]*8 #Potencia por cada subsistema en un dt
+    Edt = [0]*8 # Energía consumida por cada subsistema en un dt
+    Idt = [0]*8 # Corriente demandada por cada subsistema en un dt
+    Pdt = [0]*8 # Potencia por cada subsistema en un dt
 
-    Orbit = Orbita(t) #orbita actual
+    Orbit = Orbita(t) # órbita actual
 
-    taux = t - Orbit*94.6 #Tíempo del día local del satelite taux = [0, 94.6).
+    taux = t - Orbit*94.6 # Tiempo del día local del satélite taux = [0, 94.6).
 
     Edt[0], Idt[0], Pdt[0] = EPS(PV_EPS, dt)
     Edt[1], Idt[1], Pdt[1] = OBC(PV_OBC, dt)
@@ -686,7 +698,7 @@ fig, ax1 = plt.subplots(figsize=(50,10))
 fig.suptitle('Carga de la batería y Potencia Neta en función del tiempo')
 
 #--------------------------------------------------------------------------------------------
-# Carga de la batería vs Tiempo
+# Carga de la batería vs tiempo
 
 ax1.plot(tGraph,EGraph,'r', label ='Batería')
 ax1.set_xlabel("$Tiempo \; [mín]$")
