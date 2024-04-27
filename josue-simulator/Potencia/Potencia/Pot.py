@@ -592,7 +592,7 @@ Init_COMMTX_MHz = Asignar_Evento_COMMTX_MHz('EventTelemetry.csv')
 
 #-------------------------------------------
 #Telemetría
-Init_COMMTX_GHz = Asignar_Evento_COMMTX_GHz('EventCOMMGHz.csv')
+Init_COMMTX_GHz = Asignar_Evento_COMMTX_GHz('EventCOMMGHZ.csv')
 
 #-------------------------------------------
 #condiciones iniciales Panel
