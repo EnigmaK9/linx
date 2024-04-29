@@ -10,7 +10,7 @@ def fetch_and_display_data():
 
     # Execute SQL query to select all records from the multispectral_camera table
     cursor.execute('''
-        select id, start_time, end_time, duration, power, voltage, orbit, start_minute, activity_duration, energy, current, priority_t, priority_e
+        select id, start_time, end_time, duration, power, voltage, orbit,  activity_duration, energy, current, priority_t, priority_e
         from multispectral_camera
         limit 100
     ''')
