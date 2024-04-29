@@ -56,13 +56,17 @@ def generateSyntheticData(numSamples=1000, initialSoC=95):
     power = np.random.uniform(1, 3, numSamples)
     taskPriority = np.random.uniform(0, 1, numSamples)
     executionPriority = np.random.uniform(0, 1, numSamples)
+    executionTime = np.random.uniform(0, 100, numSamples)
+    download = np.random.uniform(0, 1, numSamples)
 
     dfTraining = pd.DataFrame({
         'initialTime': initialTime,
+        'executionTime': executionTime,
         'duration': durations,
         'power': power,
         'taskPriority': taskPriority,
-        'executionPriority': executionPriority
+        'executionPriority': executionPriority,
+        'download': download
     })
 
     # Decision factor based on power and priorities
@@ -85,7 +89,7 @@ def calculate_values(df):
     g_k = 1  # Assuming a value for g_k
 
     # Calculate the values using the formula provided
-    df['calculated_values'] = df['Execute'] * df['executionPriority'] * np.exp(((df['initialTime'] - df['duration']) / sigma) ** 2) + (df['taskPriority'] * df['duration'] * g_k)
+    df['calculated_values'] = np.round(df['Execute'] * df['executionPriority'] * np.exp(((df['initialTime'] - df['executionTime']) / sigma) ** 2) + (df['taskPriority'] * df['download'] * g_k), 2)
 
     return df
 
