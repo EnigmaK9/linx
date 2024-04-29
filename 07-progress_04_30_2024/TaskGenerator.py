@@ -6,7 +6,7 @@ def generarDatosSinteticos(numMuestras=10):
     np.random.seed(42)  # Para reproducibilidad
     HorasInicio = np.random.randint(0, 24, numMuestras)  # Generar horas aleatorias entre 0 y 23
     MinutosInicio = np.random.randint(0, 60, numMuestras)  # Generar minutos aleatorios entre 0 y 59
-    MinutosDuracion = np.random.randint(0, 15, numMuestras)
+    MinutosDuracion = np.random.randint(0, 10, numMuestras)
     SegundosDuracion = np.random.randint(0, 60, numMuestras)
     Potencias = np.round(np.random.uniform(1, 3, numMuestras), 2)
     PriorityEs = np.round(np.random.uniform(0, 1, numMuestras), 2)
