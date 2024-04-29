@@ -10,7 +10,8 @@ create table operation_periods (
     voltage real check (voltage >= 0) not null,
     orbit integer not null,
     execution_priority integer not null,
-    transmission_priority integer
+    transmission_priority integer,
+    subsystem_type text not null
 );
 
 -- Multispectral Camera table with reference to Operation Periods
