@@ -1,0 +1,36 @@
+suceso de ejecucion
+s_j es un numero binario
+p_j_r prioridad de la ejecucion
+exponencial depende del tiempo
+cuanto me demore ahora en hacer la tarea
+bajar los datos es un proceso continuo 
+desde que se le dio la orden al satelite
+si la hace donde yo queria, si la hace mas lejos va siendo peor
+los datos oslametne los puedo bajar cuando el satelite pasa por 
+la ground station
+es discreto
+bajar la tarea es continua
+divido el paso del microprocesador entre el tiempo
+g(k) es uno si k = 1. k es el número de pasajes de la estacion terrena
+desde el pasaje que se le dio la orden
+pasaje subsiguiente k = 1
+g(k) es lo máximo. es que yo la bajé cuando yo quería bajar
+si la baja al día siguiente k = 2
+ahi no es tan bueno
+arbitrariamente es 0.5, es la mitad de bueno
+0.25 3 dias despues
+cualquier dia es 0
+es una función la ajustamos a lo que nos convenga
+lo tomó como estado de carga
+cada termino tiene lo que corresponde a la filosofía de ese término
+que es lo que pasa si le pones producto
+producto, asumes que g(k) es 1 k > 1 es igual a cero 
+si ese término lo bajaste
+si no que le decis que eso multiplica lo otro
+dj es uno o cero
+executionPriority
+estuvieran los nombres de las variables
+es un valor que yo doy
+le dieron la lista de tareas
+todo:
+- mostrar la lista de tareas para ver si lo que hacemos es razonable o no.
