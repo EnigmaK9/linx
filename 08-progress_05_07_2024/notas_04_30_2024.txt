@@ -38,3 +38,28 @@ hay 3 tipos de tareas:
 - las tareas de potencia fija
 - tareas de potencia variable
 - tarea 1, tarea 2, tarea 3, tiempo de arranque
+Este es el vector de tareas
+- presentación de código es lo peor que podemos hacer
+- cada elemento del vector corresponde a una tarea
+- potencia es tal
+- duration es tal
+- no tiene nada que ver con el otro
+[
+    P 
+    dP 
+    d^2P
+    SoC 
+    dS 
+    d^2_s
+]
+[
+    I_D
+    P_R 
+    T_S 
+    delta_Time
+    P_E
+    P_T
+]
+con el switch no deterministico
+Le das la misma tarea, y si sale con la misma lista
+Tiene que empezar las cosas y ganar puntos
