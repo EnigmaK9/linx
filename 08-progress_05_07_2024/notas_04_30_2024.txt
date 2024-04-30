@@ -34,3 +34,7 @@ es un valor que yo doy
 le dieron la lista de tareas
 todo:
 - mostrar la lista de tareas para ver si lo que hacemos es razonable o no.
+hay 3 tipos de tareas:
+- las tareas de potencia fija
+- tareas de potencia variable
+- tarea 1, tarea 2, tarea 3, tiempo de arranque
