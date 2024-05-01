@@ -1,0 +1,5 @@
+TaskID,Power,StartTime,Duration,PriorityTransmission,PriorityExecution
+1,1.5,10,5,0.2,0.2
+2,2.0,30,1,1,1
+3,1.0,50,5,0.4,0.1
+4,2.5,70,1,0.3,0.9
