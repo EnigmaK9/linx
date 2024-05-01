@@ -9,8 +9,15 @@ This repository contains the source code for the neural network developed for th
 - *03-project-progress_02_april_2024*: Folder containing progress updates on the project as of April 2, 2024.
 - *04-project-progress_09_april_2024*: Folder containing progress updates on the project as of April 9, 2024.
 - *05-project-progress_16_april_2024*: Folder containing progress updates on the project as of April 16, 2024.
+- *06-progress_04_22_2024*: Folder containing progress updates on the project as of April 22, 2024.
+- *07-progress_04_30_2024*: Folder containing progress updates on the project as of April 30, 2024.
+- *08-progress_05_07_2024*: Folder containing progress updates on the project as of May 7, 2024.
 - *jorge-vega-code*: Directory for Jorge Vega's code contributions.
+- *images*: Directory containing various images related to the project.
+- *josue-simulator*: Simulator tool contributed by Josue.
+- *notes.excalidraw*: Directory for excalidraw notes.
 - *presentations*: Directory for project presentations.
+- *references*: Directory for additional reference documents.
 - *.git*: Git repository directory.
 - *README.md*: This file, providing an overview of the repository.
 
@@ -28,5 +35,3 @@ The neural network code can be utilized for various purposes within the nanosate
 
 ## License
 - MIT License. All rights reserved.
-
-
