@@ -5,8 +5,8 @@ create table multispectral_camera (
     power real not null,          -- power in watts
     voltage real not null,        -- operating voltage in volts
     orbit integer not null,       -- orbit number of the event start
-    activity_duration real not null,  -- duration of the activity in minutes
-    priority_t real not null,     -- transmission priority
-    priority_e real not null      -- execution priority
+    transmission_priority real not null,     -- transmission priority
+    execution_priority real not null      -- execution priority
+    duration real not null,  -- duration of the activity in minutes
 );
 

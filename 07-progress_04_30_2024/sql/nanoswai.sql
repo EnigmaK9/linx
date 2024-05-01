@@ -3,14 +3,15 @@ pragma foreign_keys = on;
 
 -- Operation Periods table to hold common fields across multiple subsystems
 create table operation_periods (
-    period_id integer primary key,
+    task_id integer primary key,
     start_time text not null,
     end_time text not null,
     power real check (power >= 0) not null,
     voltage real check (voltage >= 0) not null,
     orbit integer not null,
     execution_priority integer not null,
-    transmission_priority integer
+    transmission_priority integer,
+    subsystem_type text not null
 );
 
 -- Multispectral Camera table with reference to Operation Periods
