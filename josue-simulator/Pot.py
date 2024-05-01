@@ -367,8 +367,8 @@ def Battery(Init, q, E, I, P):
         I1 = I1 + I[i]
         E1 = E1 + E[i] # Energía Neta
 
-    PcMax = Vc*Ic/1000 # Potencia de carga maxima = Voltaje*corriente [W]
-    PdMax = Vd*Id/1000 # Potencia de descarga maxima = Voltaje*corriente [W]
+    PcMax = Vc * Ic / 1000 # Potencia de carga maxima = Voltaje*corriente [W]
+    PdMax = Vd * Id / 1000 # Potencia de descarga maxima = Voltaje*corriente [W]
 
     q = q + E1 # Energía actual de la batería luego de un dt
 
