@@ -37,29 +37,33 @@ DURATION_OF_ORBIT = 94.6  # Duración de una órbita en minutos
 # ## Dataframe
 # - TaskID
 # - Potencia
-# - StartTime
+# - Start Time
+# - Duration
+# - Transmission Priority
+# - Execution Priority
 
 # In[3]:
 
 
-'''TasksDf = pd.DataFrame({
-    'TaskID': [1, 2, 3, 4],
-    'Power': [1.5, 2.0, 1.0, 2.5],
-    'StartTime': [10, 30, 50, 70],
-    'Duration': [5, 1, 5, 1],
-    'PriorityTransmission': [0.2, 1, 0.4, 0.3],
-    'PriorityExecution': [0.2, 1, 0.1, 0.9]
-})'''
-
 def load_tasks_from_csv(filepath):
     try:
-        # Asume que el delimitador es una coma, y especifica los nombres de las columnas si es necesario
-        TasksDf = pd.read_csv(filepath, delimiter=',', names=['TaskID', 'Power', 'StartTime', 'Duration', 'PriorityTransmission', 'PriorityExecution'], header=None)
-        print("Tareas cargadas correctamente.")
-        return TasksDf
+        # Lee el archivo CSV y carga sus datos en un DataFrame
+        tasks_df = pd.read_csv("tareas.csv")
+
+        # Muestra el contenido del DataFrame
+        print("Contenido del DataFrame:")
+        print(tasks_df)
+
+        return tasks_df
     except Exception as e:
-        print(f"Error al cargar las tareas: {e}")
+        print(f"Error al cargar las tareas desde el archivo CSV: {e}")
         return pd.DataFrame()  # Retorna un DataFrame vacío en caso de error
+
+# Ruta del archivo CSV
+archivo_csv = "08-progress_05_07_2024/simulation-function/tareas.csv"  # Reemplaza "ruta/del/archivo.csv" con la ruta real de tu archivo
+
+# Llama a la función para cargar el archivo CSV en un DataFrame
+TasksDf = load_tasks_from_csv(archivo_csv)
 
 
 # ## dispersion σ
@@ -90,6 +94,10 @@ def g(k):
 
 # ## Definimos la función de recompensa
 
+# \begin{equation*}
+#     \xi _j = S_jP_je^-{\left(\frac{(t_{j}^{E})-t_{j}^{R}}{\sigma}\right)^2}((P_j^D)(d_j)({g(k)))}
+#   \end{equation*}
+
 # In[6]:
 
 
@@ -102,6 +110,10 @@ def task_reward(task, t_required, t_actual, sigma, d, k):
 
 
 # ## Definimos la función de recompensa total
+
+# \begin{equation*}
+# \mathcal{\xi} = \sum_{j=1}^{J} \mathcal{\xi}_j + \frac{\alpha}{N} \sum_{i=1}^{N} \left( \frac{E_i - E_L}{E_{max} - E_L} \right)
+# \end{equation*}
 
 # In[7]:
 
@@ -122,7 +134,7 @@ def available_power(t, phase, k, efficiency, pt_max_panel):
     return max(pt_max_panel * cos(2 * pi * t / TFinal + phase) * efficiency * k, 0)
 
 
-# ### Define la Ejecucuión de tareas
+# ### Define la ejecución de tareas
 
 # In[9]:
 
@@ -176,7 +188,7 @@ def is_task_running(times, task_active):
             print(f"At minute {t}, no task is running.")
 
 
-# ### Administración del SoC
+# ### Administración del estado de carga (SoC)
 
 # In[11]:
 
@@ -207,7 +219,7 @@ def calculate_derivatives(data, dt):
     return d1, d2
 
 
-# ### Muestreo de parametros
+# ### Muestreo de parámetros
 # 
 
 # In[13]:
@@ -246,7 +258,7 @@ def sample_parameters(n):
 # Esto generará una lista de 10 tuplas, cada una con valores de 'k' y 'eff' muestreados.
 
 
-# ### Aniliza los rangos de tiempo en el Soc
+# ### Aniliza los rangos de tiempo en el estado de carga (SoC)
 # 
 
 # In[14]:
@@ -331,7 +343,7 @@ def evaluate_performance(time_in_ranges):
 # print(performance)
 
 
-# ### Imprime el historico
+# ### Imprime el histórico
 
 # In[16]:
 
@@ -341,7 +353,7 @@ def print_historical_task_status(times, task_status):
         print(f"At minute {time}: Historical Task Status = {status}")
 
 
-# In[19]:
+# In[17]:
 
 
 # Se genera un array de tiempos desde TInitial hasta TFinal con un paso de Dt
@@ -389,7 +401,7 @@ Cálculo de derivadas: Las funciones calculate_derivatives calculan las primeras
 # ### Graficación de los datos
 # 
 
-# In[ ]:
+# In[18]:
 
 
 plt.figure(figsize=(18, 13.5))
@@ -443,7 +455,7 @@ plt.show()
 
 # ### Parte Final
 
-# In[ ]:
+# In[19]:
 
 
 # Analiza el tiempo que el sistema ha permanecido en diferentes rangos de estado de carga (SoC)
@@ -488,7 +500,7 @@ print("Total Reward:", Z)
 
 # ### Ruta al archivo CSV con las tareas
 
-# In[ ]:
+# In[20]:
 
 
 PATH_TO_CSV = 'tareas.csv'  # Ruta al archivo CSV con las tareas
@@ -497,7 +509,7 @@ PATH_TO_CSV = 'tareas.csv'  # Ruta al archivo CSV con las tareas
 # ### Función para cargar tareas desde un archivo CSV
 # 
 
-# In[ ]:
+# In[21]:
 
 
 def load_tasks_from_csv(filepath):
@@ -514,7 +526,7 @@ def load_tasks_from_csv(filepath):
 # ### Función para simular una orbita
 # ### espera un segundo
 
-# In[ ]:
+# In[22]:
 
 
 # Función para simular una órbita
@@ -528,7 +540,7 @@ def simulate_orbit(start_time, tasks_df):
     return end_time
 
 
-# In[ ]:
+# In[23]:
 
 
 # Función principal del simulador
@@ -548,7 +560,7 @@ def main_simulation_loop():
         time.sleep(5)  # Pausa antes de iniciar la siguiente órbita
 
 
-# In[ ]:
+# In[24]:
 
 
 # Ejecutar el simulador
